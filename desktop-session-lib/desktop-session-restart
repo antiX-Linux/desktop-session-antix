@@ -1,0 +1,112 @@
+#!/bin/bash
+
+. /usr/local/lib/desktop-session/lib-desktop-session.sh
+. /usr/local/lib/desktop-session/desktop-session-file-locations.sh
+
+main() {
+    local new_code=${1:-@current}
+
+    say "Started"
+
+    new_code=$(echo $new_code | tr '[A-Z]' '[a-z]')
+    local old_code=$(read_file $desktop_file)
+
+    [ "$new_code" = @default ] && new_code=$(read_file $default_desktop_file)
+    [ "$new_code" = @current ] && new_code=$old_code
+
+    if [ -z "$new_code" ]; then
+        new_code=@default
+        warn "Missing or empty desktop file: $desktop_file"
+        warn "Will restart to the default desktop"
+        # FIXME
+        echo @default > $desktop_file
+        echo_cmd exec $desktop_session_logout
+    fi
+
+    local old_wm old_im
+    case $old_code in
+          rox-*) old_wm=${old_code#rox-}   ; old_im=rox   ;;
+        space-*) old_wm=${old_code#space-} ; old_im=space ;;
+         none-*) old_wm=${old_code#none-}  ; old_im=none  ;;
+              *) old_wm=$old_code          ; old_im=none  ;;
+    esac
+
+    say "old code: $old_code"
+    say "new code: $new_code"
+
+    # Keep this above "cycle" case statement to avoid having
+    # the popup appear when user only sets the icon manager.
+    if [ "$new_code" = "$old_code" ]; then
+        # FIXME: pop up window ask for restart
+        warn "ask user about restart"
+        echo $new_code > $restart_file
+        echo_cmd exec $desktop_session_logout
+        return
+    fi
+
+    local orig_code=$new_code
+
+    # If this is the first time @cycle-wm was used then save the icon-manager
+    # in a file.  All subsequent uses of @cycle-wm will use this icon-manager
+    # (even if it is "none").  Anything except @cycle-wm will cause us to reset
+    # for starting over.
+    if [ "$new_code" = "@cycle-wm" ]; then
+        [ -e $cycle_file ] || echo $old_im > $cycle_file
+        old_im=$(read_file $cycle_file)
+    else
+        rm -f $cycle_file
+    fi
+
+    case $new_code in
+             @-*) new_code=$old_im-${new_code#@-}          ;;
+       @cycle-im) new_code=$(cycle_icons $old_im)-$old_wm  ;;
+       @cycle-wm) new_code=$old_im-$(cycle_wms $old_wm)    ;;
+            @rox) new_code=rox-$old_wm                     ;;
+        @spacefm) new_code=space-$old_wm                   ;;
+          @space) new_code=space-$old_wm                   ;;
+           #@none) new_code=$old_wm                         ;;
+              @*) fatal "Uncaught @desktop-code: $newcode" ;;
+    esac
+
+    [ "$new_code" != "$orig_code" ] && say "new code: $new_code"
+
+    local new_wm new_im
+    case $new_code in
+          rox-*) new_wm=${new_code#rox-}   ; new_im=rox-   ;;
+        space-*) new_wm=${new_code#space-} ; new_im=space- ;;
+         none-*) new_wm=${new_code#none-}  ; new_im=none-  ;;
+              *) new_wm=$new_code          ; new_im=""  ;;
+    esac
+
+    echo $new_im$new_wm > $restart_file
+    exec $desktop_session_logout
+}
+
+cycle() {
+    local e el=$1 cnt=1
+    shift
+    for e; do
+        [ "$e" = "$el" ] && break
+        cnt=$((cnt + 1))
+    done
+    if [ $cnt -gt $# ]; then
+        echo "$el"
+        return 1
+    fi
+    local shift=$(( cnt  % $#))
+    shift $shift
+    echo "$1"
+    return 0
+}
+
+raw_wm_list() {
+    grep -h ^Name= /usr/share/xsessions/*.desktop \
+        | sed -r -e 's/^Name=//' -e 's/ (desktop|session)$//i' -e 's/ +/_/g' \
+        | tr '[A-Z]' '[a-z]' | sort -f -u | grep -v icewm-session
+}
+
+cycle_icons() { cycle $1 space none rox  ;}
+cycle_wms()   { cycle $1 $(raw_wm_list)  ;}
+
+
+main "$@" >> $log_file 2>&1

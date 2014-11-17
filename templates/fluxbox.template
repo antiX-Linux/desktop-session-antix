@@ -1,0 +1,35 @@
+#Template to build Fluxbox menu
+#This template should reflect the fluxbox syntax for the fluxbox menu
+#Take care to maintain a space before and after the "="
+#File_Start = 
+#File_End = 
+#Menu_Start = [submenu] (Name) <Icon>  
+#Menu_End = [end]
+#Menu_Program = menuprog "%s" "%s" %s
+#Program = [exec] (Name) {Program} <Icon>
+#Separator = [separator]
+
+File_Start = 
+File_End = 
+Menu_Start = [submenu] (%s) <%s>  
+Menu_End = [end]
+Menu_Program = menuprog "%s" "%s" %s
+Program = [exec] (%s) {%s} <%s>
+Separator = [separator]
+
+
+#The Following Lines are to change the order of substitution of the %s place holders
+#There are 3 Options. name, icon, execute.
+#These can be aranged and any order to match the wm's abilities.
+#They *must* remain comma separated 
+#Program_Sub_Order = name, icon, execute 
+#Menu_Sub_Order = name, icon (We do not need to execute anything in when opening a menu ;) )
+
+Program_Sub_Order = name, execute, icon
+Menu_Sub_Order = name, icon
+
+#The following line is for determining the application menus file name. 
+App_File = menu-applications
+
+#User Config dir
+Conf_Dir = .fluxbox

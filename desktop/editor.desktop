@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Text Editor	
+Icon=text-editor
+Categories=X-Personal;
+Exec=desktop-defaults-run -te
+Terminal=false

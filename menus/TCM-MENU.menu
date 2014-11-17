@@ -1,0 +1,107 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN" "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<!-- Start Menu -->
+<Menu>
+
+  <!-- Set menu name -->
+  <Name>Personal</Name>
+  
+  <!-- Set the directory file for icon, discription, and translations -->
+  <Directory>desktop-menu-personal.directory</Directory>
+  
+  <!-- Read standard .directory and .desktop file locations -->
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+  
+  <!-- Read in overrides and child menus from applications-merged/ -->
+  <DefaultMergeDirs/>
+  
+  <!-- Read custom directory for .desktop files -->
+  <!-- <AppDir>/share/antiX/applications</AppDir> -->
+  <!-- <AppDir>/usr/share/desktop-defaults/defaults/</AppDir> -->
+  
+  <!-- Read custom directory for .directory files -->
+  <!-- <DirectoryDir>/usr/share/antiX/desktop-directories</DirectoryDir> -->
+
+  <!-- Include files in root applications menu
+     Categorized files: 
+     <Category>Include category from .desktop files</Category>
+     <Category>Accessories</Category>
+     
+     Include alternate catagories:
+     <OR>
+        <Category>Games</Category>
+     </OR>
+     
+     Include more categories catagories:
+     <AND>
+        <Category>Games</Category>
+     </AND>
+     
+     Include Specific Files:
+     <Filename>terminal.desktop</Filename>
+     
+     Include all files in all categories:
+     <All/>
+  -->
+  <!-- <Include> -->
+    <!-- <Filename>terminal.desktop</Filename>-->
+  <!-- </Include> -->
+  
+  <!-- Exclude files in root application menu that would otherwise be included from above. Handled using the same syntax as <Include> above -->
+  <!-- <Exclude> -->
+    <!-- <Filename>terminal.desktop</Filename>-->
+  <!-- </Exclude> -->
+  
+  <!-- Layout of the menu.
+     It is natuarally sorted in alphabetical order.
+     This is also where to place....
+     Separators:
+     <Separator/> 
+     
+     Specify the location of a program:
+     <Filename>exo-terminal-emulator.desktop</Filename> 
+     
+     Or menu:
+     <Menuname>Settings</Menuname> 
+  -->
+  <Layout>
+    <!-- <Filename>terminal.desktop</Filename>-->
+    <!-- <Separator/> -->
+    <!-- <Menuname>DesktopSettings</Menuname> -->
+    <Filename>file-manager.desktop</Filename>
+	<Filename>email.desktop</Filename>
+	<Filename>web-browser.desktop</Filename>
+	<Filename>terminal.desktop</Filename>
+	<Filename>editor.desktop</Filename>
+	<Filename>image-viewer.desktop</Filename>
+	<Filename>audio-player.desktop</Filename>
+	<Filename>video-player.desktop</Filename>
+    <Separator/>
+    <Menuname>Personal</Menuname>    
+    <Merge type="files"/>
+    <Merge type="menus"/>
+
+  </Layout>
+  
+  <!-- Below are the submenus (accessories, games, internet, etc....)
+     They follow the same scheme as above with the exeption of "other".
+     Other contains:
+     <OnlyUnallocated/> 
+     To filter out all the files that are already in a menu. 
+  -->
+  
+  <!-- Menu Personal Menu Files -->
+    <Include>
+	  <Filename>file-manager.desktop</Filename>
+	  <Filename>email.desktop</Filename>
+	  <Filename>web-browser.desktop</Filename>
+	  <Filename>terminal.desktop</Filename>
+	  <Filename>editor.desktop</Filename>
+	  <Filename>image-viewer.desktop</Filename>
+	  <Filename>audio-player.desktop</Filename>
+	  <Filename>video-player.desktop</Filename>
+	  <Category>X-Personal</Category>
+	</Include>
+  <!-- End 0f Personal Menu Files -->
+  
+</Menu>

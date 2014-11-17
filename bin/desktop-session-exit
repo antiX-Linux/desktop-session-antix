@@ -1,0 +1,47 @@
+#!/bin/bash
+#exit  antix bash backend
+. /usr/local/lib/desktop-session/desktop-session-file-locations.sh
+
+help() {
+    echo "Usage:"
+    echo "-l | --logout     Logout of the current session";
+    echo "-L | --lock       Lock the current session";
+    echo "-h | --hibernate  Set the machine into hibernate";
+    echo "-s | --shutdown   Shutdown your machine";
+    echo "-S | --suspend    Set the machine into suspend";
+    echo "-r | --reboot     Reboot your machine";
+    echo "-R | --restart    Restart the session";
+    }
+
+case $1 in
+-l|--logout)
+    $desktop_session_logout
+    ;;
+-L|--lock)
+    xlock
+    ;;
+-h|--hibernate)
+    dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
+    ;;
+-s|--shutdown)
+    sudo poweroff
+    ;;
+-S|--suspend)
+    dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+    ;;
+-r|--reboot)
+    sudo reboot
+    ;;
+-R|--Restart)
+    $desktop_session_restart
+    ;;
+*)
+    if [ "$DISPLAY" ]; then
+        $desktop_session_exit_gui &
+        exit
+    else
+        echo "$1 Not an option"
+        help;
+    fi
+    ;;
+esac

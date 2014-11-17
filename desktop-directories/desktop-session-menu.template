@@ -1,0 +1,171 @@
+start_file "--antiX--"
+
+    entry "Terminal" "x-terminal-emulator" /usr/share/pixmaps/roxterm.xpm
+    entry "File Manager" "antiX-FileManager.sh" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+
+    separator
+
+    entry "Web Browser" "x-www.browser" /usr/share/pixmaps/iceweasel.xpm
+    entry "Editor" "leafpad" /usr/share/icons/gTangish-2.0a1/32x32/apps/accessories-text-editor.png
+    entry "Screenshot" "antixscreenshot.sh" /usr/share/icons/gTangish-2.0a1/32x32/devices/camera-photo.png
+
+    separator
+
+    include_menu "Applications" menu-applications /usr/share/icons/gTangish-2.0a1/32x32/apps/blam.png
+    
+    separator
+    
+    entry "Update Menu" "auto-@wm-menu.sh" /usr/share/icons/gTangish-2.0a1/32x32/apps/gnome-settings-default-applications.png
+    
+    separator
+
+    start_menu "Terminal Apps" /usr/share/icons/gTangish-2.0a1/32x32/apps/utilities-terminal.png
+        start_menu "Multimedia" /usr/share/icons/gTangish-2.0a1/32x32/categories/applications-multimedia.png
+            entry "CD/DVD Writer" "x-terminal-emulator -e cdw" /usr/share/icons/antiX/cdcopy.png
+            entry "Music Player" "x-terminal-emulator -e mocp" /usr/share/icons/gTangish-2.0a1/32x32/apps/listen.png
+        end_menu
+
+        start_menu "Network" /usr/share/icons/gTangish-2.0a1/32x32/categories/applications-internet.png
+            entry "Alpine Mail" "x-terminal-emulator -e alpine" /usr/share/icons/gTangish-2.0a1/32x32/apps/internet-mail.png
+            entry "Browser elinks" "x-terminal-emulator -e elinks http://antiX.mepis.com" /usr/share/icons/gTangish-2.0a1/32x32/mimetypes/text-html.png
+            entry "Irssi Chat" "x-terminal-emulator -e irssi" /usr/share/icons/gTangish-2.0a1/32x32/apps/xchat.png
+            entry "RSS/Atom Reader" "x-terminal-emulator -e newsbeuter -r" /usr/share/icons/gTangish-2.0a1/32x32/apps/internet-news-reader.png
+            entry "rTorrent" "x-terminal-emulator -e rtorrent" /usr/share/icons/gTangish-2.0a1/32x32/apps/deluge.png
+        end_menu
+
+        start_menu "Office" /usr/share/icons/gTangish-2.0a1/32x32/categories/applications-office.png
+            entry "Organizer" "x-terminal-emulator --color-scheme=GTK -e calcurse" /usr/share/icons/antiX/preferences-system-time.png
+            entry "Word" "x-terminal-emulator -e wordgrinder" /usr/share/icons/gTangish-2.0a1/32x32/apps/accessories-text-editor.png
+        end_menu
+
+    end_menu
+
+    separator
+
+    start_menu "Tools" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-system.png
+        start_menu "Editors" /usr/share/icons/gTangish-2.0a1/32x32/apps/accessories-text-editor.png
+            entry "Nano" "x-terminal-emulator -e nano" /usr/share/icons/gTangish-2.0a1/32x32/apps/utilities-terminal.png
+            entry "Ted" "/usr/bin/Ted" /usr/share/Ted/Ted.png
+        end_menu
+
+        start_menu "Filers" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "Rox Filer" "rox" /usr/share/icons/antiX/rox-filer.png
+            entry "SpaceFM" "spacefm" /usr/share/icons/hicolor/48x48/apps/spacefm.png
+            entry "MC File Manager" "x-terminal-emulator -e mc" /usr/share/icons/hicolor/64x64/apps/MidnightCommander.png
+
+            separator
+
+            entry "Search" "spacefm --find-files" /usr/share/icons/gTangish-2.0a1/32x32/actions/edit-find.png
+        end_menu
+
+        start_menu "System" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-desktop.png
+            entry "App Killer" "xkill" /usr/share/icons/gTangish-2.0a1/32x32/actions/dialog-cancel.png
+            entry "Process Viewer" "x-terminal-emulator -e htop" /usr/share/pixmaps/htop.png
+            entry "System Information" "inxi-gui" /usr/share/icons/gTangish-2.0a1/32x32/devices/computer.png
+
+            separator
+
+            entry "Add .desktop Files" "ktsuss adddesktop.sh" /usr/share/icons/gTangish-2.0a1/32x32/actions/gtk-edit.png
+        end_menu
+
+    end_menu
+
+    entry "Control Centre" "antixcc.sh" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-desktop.png
+
+    separator
+
+    start_menu "Help" /usr/share/icons/gTangish-2.0a1/32x32/apps/help-browser.png
+        start_menu "antiX" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "antiX FAQ" "dillo /usr/share/antiX/FAQ/index.html"
+            entry "antiX-live How-To" "dillo /usr/share/antiX/Boot_Menu/antiX-gfxboot.html"
+
+            separator
+
+            entry "Rox Manual" "dillo http://rox.sourceforge.net/Manual/Manual/Manual.html"
+        end_menu
+
+        separator
+
+        start_menu "Fluxbox" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "Fluxbox Docs" "dillo http://fluxbox.sourceforge.net/docbook/en/html/"
+            entry "Fluxbox FAQ" "dillo http://fluxbox-wiki.org/index.php/Faqs"
+            entry "Fluxbox Wiki" "dillo http://fluxbox-wiki.org/index.php/Fluxbox-wiki"
+
+            separator
+
+            entry "Arch Wiki" "dillo http://wiki.archlinux.org/index.php/Fluxbox"
+        end_menu
+
+        start_menu "IceWM" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "IceWM FAQ" "dillo http://www.icewm.org/FAQ/"
+            entry "IceWM Manual" "dillo http://www.icewm.org/manual/"
+
+            separator
+
+            entry "OSNews" "dillo http://www.osnews.com/story/7774/IceWM--The-Cool-Window-Manager/"
+        end_menu
+
+        start_menu "JWM" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "Homepage" "dillo http://joewing.net/programs/jwm/"
+            entry "Arch Wiki" "dillo https://wiki.archlinux.org/index.php/JWM"
+            entry "WM - Puppy-Linux" "dillo http://puppy.b0x.me/wiki/doku.php?id=jwm"
+        end_menu
+
+        separator
+
+        start_menu "Applications" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "Firewall" "dillo https://help.ubuntu.com/community/Gufw"
+            entry "mtPaint" "dillo http://mtpaint.sourceforge.net/handbook/"
+            entry "Partimage" "dillo http://www.partimage.org/Partimage-manual_Usage"
+        end_menu
+
+        start_menu "Man Pages" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+            entry "Backup" "x-terminal-emulator -e man luckybackup"
+            entry "Irssi" "x-terminal-emulator -e man irssi"
+            entry "mc" "x-terminal-emulator -e man mc"
+            entry "mocp" "x-terminal-emulator -e man mocp"
+            entry "Nano" "x-terminal-emulator -e man nano"
+            entry "Rss/Atom" "x-terminal-emulator -e man newsbeuter"
+            entry "Terminal" "x-terminal-emulator -e man urxvt"
+            entry "Torrent" "x-terminal-emulator -e man rtorrent"
+        end_menu
+
+    end_menu
+
+    BEGIN fluxbox
+    entry "Run" "gexec"
+    start_menu "Fluxbox Settings"
+        entry "Update Menu" "auto-@wm-menu.sh"
+
+        separator
+
+        fluxbox "Configuration" config
+        start_menu "Styles" Style
+            fluxbox "~/.fluxbox/styles" stylesdir
+            fluxbox "Fluxbox Styles" stylesmenu /usr/share/fluxbox/styles
+        end_menu
+
+        entry "Wallpapers" "wallpaper.py"
+
+        separator
+
+        fluxbox "Workspaces" workspaces
+
+        separator
+
+        fluxbox "Reconfigure" reconfig
+        fluxbox "Restart" restart
+    end_menu
+
+    entry "Exit" "desktop-session-exit"
+    END fluxbox
+
+    BEGIN jwm
+
+    separator
+
+    include themes-list
+    END jwm
+
+    entry "antiX Installer" "gksu antixsources.sh"
+end_file

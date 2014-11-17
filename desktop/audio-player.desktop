@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Audio Player
+Icon=multimedia
+Categories=X-Personal;
+Exec=desktop-defaults-run -a
+Terminal=false

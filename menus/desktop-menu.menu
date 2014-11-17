@@ -1,0 +1,220 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN" "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<!-- Start Menu -->
+<Menu>
+
+  <!-- Set menu name -->
+  <Name>Applications</Name>
+  
+  <!-- Set the directory file for icon, discription, and translations -->
+  <Directory>desktop-menu-menu-applications.directory</Directory>
+  
+  <!-- Read standard .directory and .desktop file locations -->
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+  
+  <!-- Read in overrides and child menus from applications-merged/ -->
+  <DefaultMergeDirs/>
+  
+  <!-- Read custom directory for .desktop files -->
+  <!-- <AppDir>/usr/share/antiX/applications</AppDir> -->
+  
+  <!-- Read custom directory for .directory files -->
+  <!-- <DirectoryDir>/usr/share/antiX/desktop-directories</DirectoryDir> -->
+
+  <!-- Include files in root applications menu
+     Categorized files: 
+     <Category>Include category from .desktop files</Category>
+     <Category>Accessories</Category>
+     
+     Include alternate catagories:
+     <OR>
+        <Category>Games</Category>
+     </OR>
+     
+     Include more categories catagories:
+     <AND>
+        <Category>Games</Category>
+     </AND>
+     
+     Include Specific Files:
+     <Filename>terminal.desktop</Filename>
+     
+     Include all files in all categories:
+     <All/>
+  -->
+  <!-- <Include> -->
+    <!-- <Filename>terminal.desktop</Filename>-->
+  <!-- </Include> -->
+  
+  <!-- Exclude files in root application menu that would otherwise be included from above. Handled using the same syntax as <Include> above -->
+  <!-- <Exclude> -->
+    <!-- <Filename>terminal.desktop</Filename>-->
+  <!-- </Exclude> -->
+  
+  <!-- Layout of the menu.
+     It is natuarally sorted in alphabetical order.
+     This is also where to place....
+     Separators:
+     <Separator/> 
+     
+     Specify the location of a program:
+     <Filename>exo-terminal-emulator.desktop</Filename> 
+     
+     Or menu:
+     <Menuname>Settings</Menuname> 
+  -->
+  <Layout>
+    <!-- <Filename>terminal.desktop</Filename>-->
+    <!-- <Separator/> -->
+    <!-- <Menuname>DesktopSettings</Menuname> -->
+    <Menuname>antiX</Menuname> 
+    <Separator/>
+    <Merge type="files"/>
+    <Merge type="menus"/>
+  </Layout>
+  
+  <!-- Below are the submenus (accessories, games, internet, etc....)
+     They follow the same scheme as above with the exeption of "other".
+     Other contains:
+     <OnlyUnallocated/> 
+     To filter out all the files that are already in a menu. 
+  -->
+   
+  <!-- "Accessories" Submenu -->
+  <Menu>
+    <Name>Accessories</Name>
+    <Directory>desktop-menu-accessories.directory</Directory>
+    <Include>
+      <Category>Accessories</Category>
+      <And>
+        <Category>Utility</Category>
+      </And>
+    </Include>
+    <Exclude>
+      <Category>Accessibility</Category>
+      <And>
+        <Category>System</Category>
+      </And>
+    </Exclude>
+  </Menu>
+  <!-- End of "Accessories" -->
+  
+  <!-- "Accessibility" Submenu -->
+  <Menu>
+    <Name>Accessibility</Name>
+    <Directory>desktop-menu-accessibility.directory</Directory>
+    <Include>
+      <Category>Accessibility</Category>
+    </Include>
+    <Exclude>
+      <Category>Settings</Category>
+    </Exclude>
+  </Menu>
+  <!-- End of "Accessibility" -->
+  
+  <!-- "Development" Submenu -->
+  <Menu>
+    <Name>Development</Name>
+    <Directory>desktop-menu-development.directory</Directory>
+    <Include>
+      <Category>Development</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Development" -->
+  
+  <!-- "Education" Submenu -->
+  <Menu>
+    <Name>Education</Name>
+    <Directory>desktop-menu-education.directory</Directory>
+    <Include>
+      <Category>Education</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Education" -->
+  
+  <!-- "Games" Submenu -->
+  <Menu>
+    <Name>Games</Name>
+    <Directory>desktop-menu-game.directory</Directory>
+    <Include>
+      <Category>Game</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Games" -->
+  
+  <!-- "Graphics" Submenu -->
+  <Menu>
+    <Name>Graphics</Name>
+    <Directory>desktop-menu-graphics.directory</Directory>
+    <Include>
+      <Category>Graphics</Category>
+    </Include>
+    <Exclude>
+      <Category>Utility</Category>
+    </Exclude>
+  </Menu>
+  <!-- End of "Graphics" -->
+  
+  <!-- "Internet and Network" Submenu -->
+  <Menu>
+    <Name>Internet and Network</Name>
+    <Directory>desktop-menu-internet-and-network.directory</Directory>
+    <Include>
+      <Category>Network</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Internet and Network" -->
+  
+  <!-- "Multimedia" Submenu -->
+  <Menu>
+    <Name>Multimedia</Name>
+    <Directory>desktop-menu-audio-video.directory</Directory>
+    <Include>
+      <Category>AudioVideo</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Multimedia" -->
+  
+  <!-- "Office" Submenu -->
+  <Menu>
+    <Name>Office</Name>
+    <Directory>desktop-menu-office.directory</Directory>
+    <Include>
+      <Category>Office</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Office" -->
+  
+  <!-- "System" Submenu -->
+  <Menu>
+    <Name>System</Name>
+    <Directory>desktop-menu-system.directory</Directory>
+    <Include>
+      <Category>System</Category>
+    </Include>
+    <Exclude>
+      <Category>Settings</Category>
+    </Exclude>
+  </Menu>
+  <!-- End of "System" -->
+  
+  <!-- "Settings" Submenu -->
+  <Menu>
+    <Name>Settings</Name>
+    <Directory>desktop-menu-settings.directory</Directory>
+    <Include>
+      <Category>Settings</Category>
+    </Include>
+  </Menu>
+  <!-- End of "Settings" -->
+  
+  <!-- "antiX" Submenu -->
+  <Menu>
+    <Name>antiX</Name>
+    <Directory>desktop-menu-antiX.directory</Directory>
+    <Include>
+      <Category>X-antiX</Category>
+    </Include>
+  </Menu>
+  <!-- End of "antiX" -->
+</Menu>

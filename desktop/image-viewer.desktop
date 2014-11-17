@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Image Viewer	
+Icon=image
+Categories=X-Personal;
+Exec=desktop-defaults-run -i
+Terminal=false

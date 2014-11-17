@@ -1,0 +1,17 @@
+apt.conf.d/*                   /etc/apt/apt.conf.d
+bin/*                          /usr/local/bin
+desktop/*                      /usr/share/applications/antix
+desktop-defaults/*             /usr/share/desktop-defaults
+desktop-directories/*          /usr/share/desktop-directories
+desktop-menu/.[a-zA-Z]*        /usr/share/desktop-menu
+desktop-menu-apt-update        /usr/local/lib/desktop-menu
+desktop-session/*              /usr/share/desktop-session
+desktop-session-etc/*          /etc/desktop-session
+desktop-session-lib/*          /usr/local/lib/desktop-session 
+locale/*	               /usr/share/locale
+menus/*                        /etc/xdg/menus
+shell/*                        /usr/lib/shell 
+skel/.desktop-session/*        /etc/skel/.desktop-session
+templates/*                    /usr/share/desktop-menu/templates 
+changelog.gz                   /usr/share/doc/desktop-session-antix 
+copyright                      /usr/share/doc/desktop-session-antix

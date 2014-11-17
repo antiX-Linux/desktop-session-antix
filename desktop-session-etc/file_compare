@@ -1,0 +1,16 @@
+#This is the config file to run a config compare
+#This is based on:
+#which window manager (based on "wm >")
+#which "Source File" (based on "Source File |")
+#which "Destination File" (based on "| Destination File"
+#"global | " denotes a comparison for all window managers
+#Example:
+#global | /etc/skel/.bashrc | ~/.bashrc
+
+#Window Manager | Source File | Destination File
+icewm | /etc/skel/.icewm/menu | ~/.icewm/menu
+#icewm | /etc/skel/.icewm/applications | ~/.icewm/applications
+jwm | /etc/skel/.jwm/menu | ~/.jwm/menu
+#jwm | /etc/skel/.jwm/applications | ~/.jwm/applications
+fluxbox | /etc/skel/.fluxbox/menu | ~/.fluxbox/menu
+#fluxbox | /etc/skel/.fluxbox/applications | ~/.fluxbox/menu

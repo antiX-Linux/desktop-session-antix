@@ -1,0 +1,96 @@
+#!/bin/bash
+
+. /usr/lib/shell/lib-desktop-session.sh
+
+disp=${DISPLAY#:}
+disp=${disp%.[0-9]}
+DESKTOP_CODE=$(cat $HOME/.desktop-session/desktop-code.$disp);
+
+main_config="/etc/desktop-session/desktop-defaults.conf"
+user_config="$dts_dir/desktop-defaults.conf";
+
+help() {
+cat <<Help
+Help:
+-fm | --file-manager    Start the default file manager
+-t  | --terminal        Start the default terminal emulator
+-e  | --email           Start the default email client
+-te | --text-editor     Start the default text editor
+-b  | --browser         Start the default web browser
+-i  | --images          Start the default image viewer
+-v  | --video           Start the default video player
+-a  | --audio           Start the default audio player
+-r 	| --root			Start the user default as root user
+Help
+}
+
+function run_case {
+args=$(echo "$@" |sed "s/$1//ig")
+
+case $1 in 
+-fm|--file-manager)
+    if [ "$OVERRIDE_SESSION_FM" = "false" ]; then
+        case $DESKTOP_CODE in
+        rox-*)
+            Exec="rox-filer $args"
+            ;;
+        space-*)
+            Exec="spacefm $args"
+            ;;
+        esac
+    fi
+    Desktop_File=$Desktop_Prefix"file-manager.desktop"
+    ;;
+-t|--terminal)          Desktop_File=$Desktop_Prefix"terminal.desktop"      
+                        if [ -n "$args" ]; then
+                        args="-e $args"
+                        fi;;
+-e|--email)             Desktop_File=$Desktop_Prefix"email.desktop"         ;;
+-te|--text-editor)      Desktop_File=$Desktop_Prefix"editor.desktop"        ;;
+-b|--browser)           Desktop_File=$Desktop_Prefix"web-browser.desktop"   ;;
+-i|--images)            Desktop_File=$Desktop_Prefix"image-viewer.desktop" ;;
+-v|--video)             Desktop_File=$Desktop_Prefix"video-player.desktop"  ;;
+-a|--audio)             Desktop_File=$Desktop_Prefix"audio-player.desktop"  ;;
+-r|--root)				Use_Root=True                                       ;;
+-h|--help)              help; exit;  										;;
+*)                      echo "Error: $1 not an option"; help; exit;         ;;
+esac
+
+} 
+. $main_config
+if [ -f "$user_config" ]; then 
+    for user_override in $(diff $user_config $main_config |grep "<" |sed "s/<\ //ig" |grep -v "^#")
+    do
+        eval $user_override;
+    done
+fi
+
+#Desktop_Prefix="/usr/share/applications/desktop-defaults-"
+if [ -d ~/.local/share/desktop-defaults/ ]; then
+    Desktop_Prefix="$HOME/.local/share/desktop-defaults/"
+else
+    Desktop_Prefix="/usr/share/desktop-defaults/"
+fi
+
+if [ "$1" = "-r" ]; then
+	root_clean=$(echo "$@" |sed "s/$1//ig")
+	run_case $root_clean
+	run_as_root=True
+else
+	run_case $@
+fi
+
+if [ ! -r "$Desktop_File" ]; then
+    echo "$Desktop_File is not readable or does not exist";
+    exit;
+fi
+
+if [ "$run_as_root" = "True" ]; then
+	Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |cut -d " " -f1)}
+	$(gksu "$Exec $args") &
+	exit
+else
+	Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |cut -d " " -f1)}
+	$($Exec $args) &
+    exit
+fi

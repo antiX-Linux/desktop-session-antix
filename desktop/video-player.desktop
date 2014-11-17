@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Video Player
+Icon=video
+Categories=X-Personal;
+Exec=desktop-defaults-run -v
+Terminal=false

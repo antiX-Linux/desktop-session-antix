@@ -1,0 +1,11 @@
+# This is a default toolbar definition file for IceWM
+#
+# Place your personal variant in $HOME/.icewm directory.
+
+### Commonly used applications
+prog @"Home Folder" folder desktop-defaults-run -fm
+prog @"Terminal" xterm desktop-defaults-run -t
+prog @"Browser" /usr/share/icons/gTangish-2.0a1/32x32/apps/internet-web-browser.png desktop-defaults-run -b
+prog @"Control Centre" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-desktop.png antixcc.sh
+prog @"Unplug Removable Device" /usr/share/icons/gTangish-2.0a1/32x32/devices/usbpendrive_unmount.png unplugdrive.sh
+prog @"Quit" /usr/share/icons/gTangish-2.0a1/32x32/actions/system-log-out.png exitantix.sh

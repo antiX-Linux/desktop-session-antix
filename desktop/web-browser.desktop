@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Web Browser
+Icon=web-browser
+Categories=X-Personal;
+Exec=desktop-defaults-run -b
+Terminal=false

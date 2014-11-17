@@ -1,0 +1,42 @@
+desktop-session-antix (0.1.5) unstable; urgency=low
+ 
+  * Many changes
+
+ -- anticapitalista <antiX@operamail.com>  Sat, 15 Nov 2014 19:09:00 +0200
+
+
+desktop-session-antix (0.1.4) unstable; urgency=low
+ 
+  * Removed remove-desktop file (in add-desktop)
+
+ -- anticapitalista <antiX@operamail.com>  Tue, 21 Oct 2014 21:21:00 +0200
+
+
+desktop-session-antix (0.1.3) unstable; urgency=low
+ 
+  * New desktop-session file.
+  * Conky set in desktop-session.conf not startup.
+  * Use poweroff rather than halt.
+
+ -- anticapitalista <antiX@operamail.com>  Thu, 09 Oct 2014 13:46:00 +0200
+
+
+desktop-session-antix (0.1.2) unstable; urgency=low
+ 
+  * Added localisation.
+
+ -- anticapitalista <antiX@operamail.com>  Sun, 29 Jun 2014 14:10:00 +0200
+
+
+desktop-session-antix (0.1.1) unstable; urgency=low
+ 
+  * New desktop-session file.
+
+ -- anticapitalista <antiX@operamail.com>  Thu, 26 Jun 2014 22:50:00 +0200
+
+
+desktop-session-antix (0.1.0) unstable; urgency=low
+ 
+  * Initial release.
+
+ -- anticapitalista <antiX@operamail.com>  Mon, 23 Jun 2014 14:50:00 +0200

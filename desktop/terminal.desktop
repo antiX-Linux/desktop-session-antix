@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=terminal	
+Icon=terminal
+Categories=X-Personal;
+Exec=desktop-defaults-run -t
+Terminal=false

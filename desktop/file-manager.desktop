@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=File Manager	
+Icon=file-manager
+Categories=X-Personal;
+Exec=desktop-defaults-run -fm
+Terminal=false

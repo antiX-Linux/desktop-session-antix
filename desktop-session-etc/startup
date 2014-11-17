@@ -1,0 +1,5 @@
+#!/bin/bash
+volumeicon &
+desktop-menu --write-out-global 
+fbxkb &
+search-bar-icon &

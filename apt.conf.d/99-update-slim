@@ -1,0 +1,9 @@
+// Automatically update antiX menus after installing a program
+
+DPkg
+{
+Pre-Invoke {"/usr/local/lib/desktop-session/desktop-session-slim-update.sh --check-diff="set" ";};
+Post-Invoke {"/usr/local/lib/desktop-session/desktop-session-slim-update.sh --check-diff="check" ";};
+};
+
+
