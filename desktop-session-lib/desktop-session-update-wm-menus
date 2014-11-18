@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. /usr/local/lib/desktop-session/lib-desktop-session.sh
 . /usr/local/lib/desktop-session/desktop-session-file-locations.sh
 
       ICON_TITLE="Icon Manager"
@@ -19,7 +20,8 @@ SET_DEF_PROG="desktop-session-set-default"
        ISTEP=2
          WMs="fluxbox icewm jwm"
 
-   icon_managers="Rox Space"
+   icon_managers="Rox Space min"
+     min_enabled=fluxbox,icewm,jwm
      Rox_enabled=fluxbox,icewm,jwm
    Space_enabled=fluxbox,icewm,jwm
 
@@ -197,7 +199,9 @@ wm_list() {
 raw_wm_list() {
     grep -h ^Name= $xs_dir/*.desktop \
         | sed -r -e 's/^Name=//' -e 's/ (desktop|session)$//i' -e 's/ +/_/g' \
-        | sort -f
+        | grep -v "IceWM" \
+        | sort -f  
+        
 }
 
 check_user() {

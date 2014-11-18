@@ -20,6 +20,7 @@ first_run_script="$lib_dir/first-run-script"
 desktop_session_logout="$lib_dir/desktop-session-logout";
 desktop_session_restart="$lib_dir/desktop-session-restart";
 desktop_session_exit_gui="$lib_dir/desktop-session-exit.py";
+desktop_session_update_wm_menus="$lib_dir/desktop-session-update-wm-menus";
 
 #Desktop-session startup scripts
 main_startup_file="$main_dts_dir/startup";
@@ -50,3 +51,6 @@ main_xdg_autostart="/etc/xdg/autostart";
 
 #Xsessions
 xs_dir="/usr/share/xsessions";
+
+#Slim Config
+slim_conf="/etc/slim.conf";

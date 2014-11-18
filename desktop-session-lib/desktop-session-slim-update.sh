@@ -73,7 +73,6 @@ main() {
         xs_dir=$prefix$xs_dir
         slim_conf=$prefix$slim_conf
     fi
-
     if [ "$quick_exit" ]; then
         [ -n "$diff_mode" -o $# -gt 0 ] && error "Extra/conflicting command line parameters --check-diff (-d)"
         [ -n "$slim_mode" -o $# -gt 0 ] && error "Extra/conflicting command line parameters --slim (-s)"
@@ -97,6 +96,7 @@ main() {
         [ -n "$diff_mode" -o $# -gt 0 ] && error "Extra/conflicting command line parameters --check-diff (-d)"
         edit_slim "$@"
     fi
+    
     exit 0
 }
 
@@ -142,6 +142,9 @@ edit_slim() {
 
     local list=$(full_desktop_list)
     sed -r -i "s=^(sessions ).*=\1$list=" $slim
+    
+    #Update alternative menus
+    $desktop_session_update_wm_menus
 }
 
 #------------------------------------------------------------------------------
