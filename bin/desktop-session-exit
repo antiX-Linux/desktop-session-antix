@@ -24,13 +24,21 @@ case $1 in
     dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
     ;;
 -s|--shutdown)
-    sudo poweroff
+    if which persist-config &> /dev/null; then
+        sudo persist-config --shutdown --command poweroff
+    else
+        sudo poweroff
+    fi
     ;;
 -S|--suspend)
     dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
     ;;
 -r|--reboot)
-    sudo reboot
+    if which persist-config &> /dev/null; then
+        sudo persist-config --shutdown --command reboot
+    else
+        sudo reboot
+    fi
     ;;
 -R|--Restart)
     $desktop_session_restart

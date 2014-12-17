@@ -1,3 +1,11 @@
+desktop-session-antix (0.1.6) unstable; urgency=low
+ 
+  * Synched with dave's repo on this date
+  * Added antiX-1 icons and locale from exit-antix 
+
+ -- anticapitalista <antiX@operamail.com>  Thu, 11 Dec 2014 00:54:00 +0200
+
+
 desktop-session-antix (0.1.5) unstable; urgency=low
  
   * Many changes

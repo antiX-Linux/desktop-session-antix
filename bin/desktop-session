@@ -126,7 +126,6 @@ launch_wm() {
 
     echo_cmd $WM_EXEC
     rm -f $desktop_file
-    rm -f $user_dts_dir/finished-login-run
 }
 
 #ADDED BY DAVE
@@ -260,7 +259,7 @@ launch_desktop() {
             else
                 echo_cmd sleep $STARTUP_DELAY && conky
             fi
-            wmctrl -F -r "Conky ($HOST)" add,below
+            echo_cmd sleep $STARTUP_DELAY && wmctrl -F -r "Conky ($(hostname))" -b add,below &
         fi
         
         #Finally Set the screen blank time / screen saver
@@ -408,6 +407,7 @@ on_exit() {
     #local list=$(wmctrl -lp | awk '{print $3}' | grep -v "^0")
     #desktop-session-kill family $(prune_pids $list)
     rm -f $signal_files
+    rm -f $user_dts_dir/finished-login-run
 }
 
 

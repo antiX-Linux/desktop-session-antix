@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Session File Manager
+Icon=/usr/share/icons/antiX/user-home.png
+Categories=Application;
+Exec=desktop-defaults-run -fm --follow
+Terminal=false

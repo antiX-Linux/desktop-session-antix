@@ -1,18 +1,16 @@
 #!/bin/bash
 
-. /usr/lib/shell/lib-desktop-session.sh
-
-disp=${DISPLAY#:}
-disp=${disp%.[0-9]}
-DESKTOP_CODE=$(cat $HOME/.desktop-session/desktop-code.$disp);
-
-main_config="/etc/desktop-session/desktop-defaults.conf"
-user_config="$dts_dir/desktop-defaults.conf";
+. /usr/local/lib/desktop-session/lib-desktop-session.sh
+. /usr/local/lib/desktop-session/desktop-session-file-locations.sh
+#Export for gtk
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0";
 
 help() {
 cat <<Help
 Help:
 -fm | --file-manager    Start the default file manager
+      --follow          Set Default file manager to follow 
+                        session icon manager / fm
 -t  | --terminal        Start the default terminal emulator
 -e  | --email           Start the default email client
 -te | --text-editor     Start the default text editor
@@ -29,8 +27,9 @@ args=$(echo "$@" |sed "s/$1//ig")
 
 case $1 in 
 -fm|--file-manager)
-    if [ "$OVERRIDE_SESSION_FM" = "false" ]; then
-        case $DESKTOP_CODE in
+    if [ "$2" = "--follow" ]; then
+        args=$(echo "$args" |sed "s/$2//ig")
+        case `head -1 $desktop_file` in
         rox-*)
             Exec="rox-filer $args"
             ;;
@@ -57,14 +56,6 @@ case $1 in
 esac
 
 } 
-. $main_config
-if [ -f "$user_config" ]; then 
-    for user_override in $(diff $user_config $main_config |grep "<" |sed "s/<\ //ig" |grep -v "^#")
-    do
-        eval $user_override;
-    done
-fi
-
 #Desktop_Prefix="/usr/share/applications/desktop-defaults-"
 if [ -d ~/.local/share/desktop-defaults/ ]; then
     Desktop_Prefix="$HOME/.local/share/desktop-defaults/"
@@ -86,11 +77,11 @@ if [ ! -r "$Desktop_File" ]; then
 fi
 
 if [ "$run_as_root" = "True" ]; then
-	Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |cut -d " " -f1)}
+	Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |sed "s/%.*//ig" ) } 
 	$(gksu "$Exec $args") &
 	exit
 else
-	Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |cut -d " " -f1)}
+	Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |sed "s/%.*//ig" ) }
 	$($Exec $args) &
     exit
 fi

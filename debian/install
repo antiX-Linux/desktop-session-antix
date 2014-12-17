@@ -1,4 +1,5 @@
 apt.conf.d/*                   /etc/apt/apt.conf.d
+antiX-1/*                      /usr/share/icons/antiX-1
 bin/*                          /usr/local/bin
 desktop/*                      /usr/share/applications/antix
 desktop-defaults/*             /usr/share/desktop-defaults
