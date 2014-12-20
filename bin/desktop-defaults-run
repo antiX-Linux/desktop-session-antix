@@ -4,6 +4,7 @@
 . /usr/local/lib/desktop-session/desktop-session-file-locations.sh
 #Export for gtk
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0";
+fallback_fm="rox-filer"
 
 help() {
 cat <<Help
@@ -35,6 +36,9 @@ case $1 in
             ;;
         space-*)
             Exec="spacefm $args"
+            ;;
+        *)
+            Exec="$fallback_fm $args"
             ;;
         esac
     fi
