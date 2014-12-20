@@ -1,3 +1,10 @@
+desktop-session-antix (0.1.7) unstable; urgency=low
+ 
+  * Fixed open fm from a wm without rox/spacefm bug
+
+ -- anticapitalista <antiX@operamail.com>  Sat, 20 Dec 2014 19:03:00 +0200
+
+
 desktop-session-antix (0.1.6) unstable; urgency=low
  
   * Synched with dave's repo on this date
