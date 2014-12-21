@@ -1,3 +1,10 @@
+desktop-session-antix (0.1.8) unstable; urgency=low
+ 
+  * Increased wait time to 3 secs from 2.
+
+ -- anticapitalista <antiX@operamail.com>  Sun, 21 Dec 2014 20:25:00 +0200
+
+
 desktop-session-antix (0.1.7) unstable; urgency=low
  
   * Fixed open fm from a wm without rox/spacefm bug
