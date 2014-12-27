@@ -14,4 +14,6 @@ jwm | /etc/skel/.jwm/menu | ~/.jwm/menu
 #jwm | /etc/skel/.jwm/applications | ~/.jwm/applications
 fluxbox | /etc/skel/.fluxbox/menu | ~/.fluxbox/menu
 #fluxbox | /etc/skel/.fluxbox/applications | ~/.fluxbox/menu
+openbox | /etc/skel/.openbox/menu | ~/.config/openbox
+#openbox | /etc/skel/.openbox/menu | ~/.config/openbox
 #global | /etc/desktop-session/file-compare-test | ~/file-compare-test

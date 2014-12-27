@@ -1,3 +1,10 @@
+desktop-session-antix (0.1.9) unstable; urgency=low
+ 
+  * Changed icon theme.
+
+ -- anticapitalista <antiX@operamail.com>  Sat, 27 Dec 2014 11:59:00 +0200
+
+
 desktop-session-antix (0.1.8) unstable; urgency=low
  
   * Increased wait time to 3 secs from 2.

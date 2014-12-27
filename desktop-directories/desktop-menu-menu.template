@@ -1,82 +1,68 @@
 start_file "--antiX--"
 
-    entry "Terminal" "x-terminal-emulator" /usr/share/pixmaps/roxterm.xpm
-    entry "File Manager" "antiX-FileManager.sh" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+    entry "Terminal" "desktop-defaults-run -t" /usr/share/icons/Faenza-Cupertino-mini/apps/32/terminal.png
+    entry "File Manager" "desktop-defaults-run -fm" /usr/share/icons/Faenza-Cupertino-mini/apps/32/file-manager.png
 
     separator
 
-    entry "Web Browser" "x-www.browser" /usr/share/pixmaps/iceweasel.xpm
-    entry "Editor" "leafpad" /usr/share/icons/gTangish-2.0a1/32x32/apps/accessories-text-editor.png
-    entry "Screenshot" "antixscreenshot.sh" /usr/share/icons/gTangish-2.0a1/32x32/devices/camera-photo.png
+    entry "Web Browser" "desktop-defaults-run -b" /usr/share/icons/Faenza-Cupertino-mini/apps/32/web-browser.png
+    entry "Editor" "desktop-defaults-run -te" /usr/share/icons/Faenza-Cupertino-mini/apps/32/text-editor.png
 
-    separator
-
-    include_menu "Applications" menu-applications /usr/share/icons/gTangish-2.0a1/32x32/apps/blam.png
-    
     separator
     
-    entry "Update Local Menu" "desktop-menu --write-out" /usr/share/icons/gTangish-2.0a1/32x32/apps/gnome-settings-default-applications.png
-    entry "Update global Menu" "gksu 'desktop-menu --write-out-global'" /usr/share/icons/gTangish-2.0a1/32x32/apps/gnome-settings-default-applications.png
-    
+    include_menu "Personal" personal /usr/share/icons/Faenza-Cupertino-mini/apps/32/config-users.png
+   
+    include_menu "Applications" menu-applications /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-accessories.png
+
+   start_menu "Update Menus" /usr/share/icons/Faenza-Cupertino-mini/apps/32/gnome-settings-default-applications.png
+    entry "Update Personal Menu" "desktop-menu --menu-file='/etc/xdg/menus/TCM-MENU.menu' --write-out --write-out-file='personal'" /usr/share/icons/Faenza-Cupertino-mini/apps/32/update-manager.png
+    entry "Update Local App Menu" "desktop-menu --write-out" /usr/share/icons/Faenza-Cupertino-mini/apps/32/update-manager.png
+    entry "Update Global App Menu" "desktop-menu --write-out-global" /usr/share/icons/Faenza-Cupertino-mini/apps/32/update-manager.png
+    end_menu
+
     separator
 
-    start_menu "Terminal Apps" /usr/share/icons/gTangish-2.0a1/32x32/apps/utilities-terminal.png
-        start_menu "Multimedia" /usr/share/icons/gTangish-2.0a1/32x32/categories/applications-multimedia.png
-            entry "CD/DVD Writer" "x-terminal-emulator -e cdw" /usr/share/icons/antiX/cdcopy.png
-            entry "Music Player" "x-terminal-emulator -e mocp" /usr/share/icons/gTangish-2.0a1/32x32/apps/listen.png
-        end_menu
-
-        start_menu "Network" /usr/share/icons/gTangish-2.0a1/32x32/categories/applications-internet.png
-            entry "Alpine Mail" "x-terminal-emulator -e alpine" /usr/share/icons/gTangish-2.0a1/32x32/apps/internet-mail.png
-            entry "Browser elinks" "x-terminal-emulator -e elinks http://antiX.mepis.com" /usr/share/icons/gTangish-2.0a1/32x32/mimetypes/text-html.png
-            entry "Irssi Chat" "x-terminal-emulator -e irssi" /usr/share/icons/gTangish-2.0a1/32x32/apps/xchat.png
-            entry "RSS/Atom Reader" "x-terminal-emulator -e newsbeuter -r" /usr/share/icons/gTangish-2.0a1/32x32/apps/internet-news-reader.png
-            entry "rTorrent" "x-terminal-emulator -e rtorrent" /usr/share/icons/gTangish-2.0a1/32x32/apps/deluge.png
-        end_menu
-
-        start_menu "Office" /usr/share/icons/gTangish-2.0a1/32x32/categories/applications-office.png
-            entry "Organizer" "x-terminal-emulator --color-scheme=GTK -e calcurse" /usr/share/icons/antiX/preferences-system-time.png
-            entry "Word" "x-terminal-emulator -e wordgrinder" /usr/share/icons/gTangish-2.0a1/32x32/apps/accessories-text-editor.png
-        end_menu
+    start_menu "Desktop" /usr/share/icons/Faenza-Cupertino-mini/places/32/user-desktop.png
+        include_menu "Alternate Desktops" /usr/share/desktop-session/wm-menus/fluxbox-wm-menu /usr/share/icons/Faenza-Cupertino-mini/places/32/user-desktop.png
+       
+            
+            separator
+            entry "Add Desktop" "add-desktop" /usr/share/icons/Faenza-Cupertino-mini/places/32/user-desktop.png
+            entry "Wallpaper" "wallpaper.py" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-wallpaper.png
+            entry "GTK Theme" "lxappearance" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png
+            entry "Desktop Defaults" "desktop-defaults-set" /usr/share/icons/Faenza-Cupertino-mini/apps/32/gnome-settings-default-applications.png
+            entry "Window Manager" "edit-wm-settings" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-system-windows.png
+            entry "Session Settings" "desktop-defaults-run -te ~/.desktop-session/desktop-session.conf" /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png
+            entry "Session Settings Global" "desktop-defaults-run -r -te /etc/desktop-session/desktop-session.conf" /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png
+           
+            separator
+            
+            entry "RoxPanel on/off" "paneltoggle.sh" /usr/share/icons/Faenza-Cupertino-mini/apps/32/gnome-panel.png
+            entry "Conky on/off" "conkytoggle.sh" /usr/share/icons/Faenza-Cupertino-mini/apps/32/utilities-system-monitor.png
 
     end_menu
 
     separator
 
-    start_menu "Tools" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-system.png
-        start_menu "Editors" /usr/share/icons/gTangish-2.0a1/32x32/apps/accessories-text-editor.png
-            entry "Nano" "x-terminal-emulator -e nano" /usr/share/icons/gTangish-2.0a1/32x32/apps/utilities-terminal.png
-            entry "Ted" "/usr/bin/Ted" /usr/share/Ted/Ted.png
-        end_menu
-
-        start_menu "Filers" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+    start_menu "Tools" /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png
+            entry "Nano" "desktop-defaults-run -t nano" /usr/share/icons/Faenza-Cupertino-mini/apps/32/utilities-terminal.png
+            entry "Ted" "/usr/local/bin/Ted" /usr/share/Ted/Ted.png
             entry "Rox Filer" "rox" /usr/share/icons/antiX/rox-filer.png
             entry "SpaceFM" "spacefm" /usr/share/icons/hicolor/48x48/apps/spacefm.png
-            entry "MC File Manager" "x-terminal-emulator -e mc" /usr/share/icons/hicolor/64x64/apps/MidnightCommander.png
-
-            separator
-
-            entry "Search" "spacefm --find-files" /usr/share/icons/gTangish-2.0a1/32x32/actions/edit-find.png
+            entry "Search" "spacefm --find-files" /usr/share/icons/Faenza-Cupertino-mini/apps/48/spacefm-find.png
+            entry "MC File Manager" "desktop-defaults-run -t mc" /usr/share/icons/hicolor/64x64/apps/MidnightCommander.png           
+            entry "App Killer" "xkill" /usr/share/icons/Faenza-Cupertino-mini/actions/32/gtk-no.png
+            entry "Process Viewer" "desktop-defaults-run -t htop" /usr/share/icons/Faenza-Cupertino-mini/apps/32/htop.png
+            entry "System Information" "inxi-gui" /usr/share/icons/Faenza-Cupertino-mini/devices/32/computer.png
+            entry "Add .desktop Files" "ktsuss adddesktop.sh" /usr/share/icons/Faenza-Cupertino-mini/actions/32/gtk-edit.png
         end_menu
 
-        start_menu "System" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-desktop.png
-            entry "App Killer" "xkill" /usr/share/icons/gTangish-2.0a1/32x32/actions/dialog-cancel.png
-            entry "Process Viewer" "x-terminal-emulator -e htop" /usr/share/pixmaps/htop.png
-            entry "System Information" "inxi-gui" /usr/share/icons/gTangish-2.0a1/32x32/devices/computer.png
-
-            separator
-
-            entry "Add .desktop Files" "ktsuss adddesktop.sh" /usr/share/icons/gTangish-2.0a1/32x32/actions/gtk-edit.png
-        end_menu
-
-    end_menu
-
-    entry "Control Centre" "antixcc.sh" /usr/share/icons/gTangish-2.0a1/32x32/categories/preferences-desktop.png
+    entry "Control Centre" "antixcc.sh" /usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png
 
     separator
 
-    start_menu "Help" /usr/share/icons/gTangish-2.0a1/32x32/apps/help-browser.png
-        start_menu "antiX" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+    start_menu "Help" /usr/share/icons/Faenza-Cupertino-mini/apps/32/help-browser.png
+        start_menu "antiX" /usr/share/icons/Faenza-Cupertino-mini/places/32/folder.png
             entry "antiX FAQ" "dillo /usr/share/antiX/FAQ/index.html"
             entry "antiX-live How-To" "dillo /usr/share/antiX/Boot_Menu/antiX-gfxboot.html"
 
@@ -87,7 +73,7 @@ start_file "--antiX--"
 
         separator
 
-        start_menu "Fluxbox" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+        start_menu "Fluxbox" /usr/share/icons/Faenza-Cupertino-mini/places/32/folder.png
             entry "Fluxbox Docs" "dillo http://fluxbox.sourceforge.net/docbook/en/html/"
             entry "Fluxbox FAQ" "dillo http://fluxbox-wiki.org/index.php/Faqs"
             entry "Fluxbox Wiki" "dillo http://fluxbox-wiki.org/index.php/Fluxbox-wiki"
@@ -97,7 +83,7 @@ start_file "--antiX--"
             entry "Arch Wiki" "dillo http://wiki.archlinux.org/index.php/Fluxbox"
         end_menu
 
-        start_menu "IceWM" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+        start_menu "IceWM" /usr/share/icons/Faenza-Cupertino-mini/places/32/folder.png
             entry "IceWM FAQ" "dillo http://www.icewm.org/FAQ/"
             entry "IceWM Manual" "dillo http://www.icewm.org/manual/"
 
@@ -106,7 +92,7 @@ start_file "--antiX--"
             entry "OSNews" "dillo http://www.osnews.com/story/7774/IceWM--The-Cool-Window-Manager/"
         end_menu
 
-        start_menu "JWM" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+        start_menu "JWM" /usr/share/icons/Faenza-Cupertino-mini/places/32/folder.png
             entry "Homepage" "dillo http://joewing.net/programs/jwm/"
             entry "Arch Wiki" "dillo https://wiki.archlinux.org/index.php/JWM"
             entry "WM - Puppy-Linux" "dillo http://puppy.b0x.me/wiki/doku.php?id=jwm"
@@ -114,41 +100,34 @@ start_file "--antiX--"
 
         separator
 
-        start_menu "Applications" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
+        start_menu "Applications" /usr/share/icons/Faenza-Cupertino-mini/places/32/folder.png
             entry "Firewall" "dillo https://help.ubuntu.com/community/Gufw"
             entry "mtPaint" "dillo http://mtpaint.sourceforge.net/handbook/"
             entry "Partimage" "dillo http://www.partimage.org/Partimage-manual_Usage"
         end_menu
 
-        start_menu "Man Pages" /usr/share/icons/gTangish-2.0a1/32x32/places/folder.png
-            entry "Backup" "x-terminal-emulator -e man luckybackup"
-            entry "Irssi" "x-terminal-emulator -e man irssi"
-            entry "mc" "x-terminal-emulator -e man mc"
-            entry "mocp" "x-terminal-emulator -e man mocp"
-            entry "Nano" "x-terminal-emulator -e man nano"
-            entry "Rss/Atom" "x-terminal-emulator -e man newsbeuter"
-            entry "Terminal" "x-terminal-emulator -e man urxvt"
-            entry "Torrent" "x-terminal-emulator -e man rtorrent"
+        start_menu "Man Pages" /usr/share/icons/Faenza-Cupertino-mini/places/32/folder.png
+            entry "Backup" "roxterm -e man luckybackup"
+            entry "Irssi" "roxterm -e man irssi"
+            entry "mc" "roxterm -e man mc"
+            entry "mocp" "roxterm -e man mocp"
+            entry "Nano" "roxterm -e man nano"
+            entry "Rss/Atom" "roxterm -e man newsbeuter"
+            entry "Terminal" "roxterm -e man urxvt"
+            entry "Torrent" "roxterm -e man rtorrent"
         end_menu
 
     end_menu
 
     BEGIN fluxbox
-    entry "Run" "gexec"
-    start_menu "Fluxbox Settings"
-        entry "Update Menu" "auto-@wm-menu.sh"
-
-        separator
-
+    entry "Run" "gexec" /usr/share/icons/Faenza-Cupertino-mini/actions/32/system-run.png
+    start_menu "Fluxbox Settings" /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png
+    
         fluxbox "Configuration" config
         start_menu "Styles" Style
             fluxbox "~/.fluxbox/styles" stylesdir
             fluxbox "Fluxbox Styles" stylesmenu /usr/share/fluxbox/styles
         end_menu
-
-        entry "Wallpapers" "wallpaper.py"
-
-        separator
 
         fluxbox "Workspaces" workspaces
 
@@ -158,15 +137,17 @@ start_file "--antiX--"
         fluxbox "Restart" restart
     end_menu
 
-    entry "Exit" "exitantix.sh"
+    entry "Exit" "desktop-session-exit" /usr/share/icons/Faenza-Cupertino-mini/actions/32/application-exit.png
+
     END fluxbox
 
     BEGIN jwm
 
     separator
 
-    include themes-list
+    include .jwm/themes-list
     END jwm
-
-    entry "antiX Installer" "gksu antixsources.sh"
+    
+    entry "antiX Installer" "gksu antixsources.sh" /usr/share/icons/msystem.png
+    
 end_file
