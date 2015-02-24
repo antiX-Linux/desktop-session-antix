@@ -19,16 +19,15 @@ main() {
         say "found ppid file.  ppid: $ppid"
     else
         say "Missing or empty ppid file: $ppid_file"
-        say "search for parent $parent_name process"
-        if ppid=$(find_my_procs --exact $parent_name); then
-            echo "Found pid of $parent_name process.  ppid; $ppid"
-            local cnt=$(echo $$ppid | wc -w)
-            [ $cnt -gt 1 ] && warn "More than one $parent_name found!"
-        else
-            warn "Could not get pid of $parent_name"
-            warn "FIXME"
-            exit
-        fi
+
+        local procs=$(find_my_procs .) || return 0
+        say "Kill remaining procs: $(echo $procs)"
+        ps j -p $(echo $procs)
+        kill -TERM $procs &>/dev/null
+        sleep .25
+        kill -KILL $procs &>/dev/null
+
+        exit 0
     fi
 
     # For the very rare case where there is no ppid file and multiple
@@ -75,7 +74,6 @@ main() {
         # echo_cmd kill_list $(protect_cmd $protect_cmds $(pgrep --pgroup $ds_gpid | grep -v ^$p$))
         echo_cmd kill_list $(protect_cmd $protect_cmds $(pgrep --pgroup $ds_gpid))
     done
-    
 }
 
 #------------------------------------------------------------------------------

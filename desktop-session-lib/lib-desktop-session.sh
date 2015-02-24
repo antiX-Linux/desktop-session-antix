@@ -109,23 +109,22 @@ save_icon_pid() {
 # are running on our DISPLAY.
 #------------------------------------------------------------------------------
 find_my_procs() {
-    local pid pid_list=$(pgrep --euid $EUID "$@") || return 1
+    local my_pid=$$
+    local pid pid_list=$(pgrep --euid $EUID "$@" | grep -v "^$my_pid$" ) || return 1
 
     #log "Find procs: $*"
 
     # Strip off optional screen
     local disp=$(echo ${DISPLAY%.[0-9]} | sed 's/\./\\./g')
 
+    ret=1
     for pid in $pid_list; do
-        local env=$(cat -v /proc/$pid/environ 2>/dev/null)
-        [ "$env" ] || continue
-
-        # Ignore optional screen
-        echo "$env" | egrep -q "@DISPLAY=$disp(\.[0-9])?\^" 2>/dev/null || continue
+        cat -v /proc/$pid/environ 2>/dev/null \
+            | egrep -q "@DISPLAY=$disp(\.[0-9])?\^" 2>/dev/null || continue
         echo $pid
-        return 0
+        ret=0
     done
-    return 1
+    return $ret
 }
 
 #------------------------------------------------------------------------------

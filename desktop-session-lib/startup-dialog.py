@@ -65,7 +65,7 @@ class mainWindow():
         window.add(self.mainbox)
         self.mainbox.show()
         
-        self.build_button(ICONS+"/upgrade.svg","View Docs","desktop-defaults-run -b file:///usr/local/share/docs/antiX/index.html",1) 
+        self.build_button(ICONS+"/upgrade.svg","View Docs","desktop-defaults-run -b file:///usr/share/antiX/FAQ/index.html",1) 
         self.build_button(ICONS+"/shutdown.svg","Close Docs",lambda w: gtk.main_quit(),0) 
         
         window.show()

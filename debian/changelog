@@ -1,3 +1,38 @@
+desktop-session-antix (0.1.13) unstable; urgency=low
+ 
+  * Up to date with upstream
+
+ -- anticapitalista <antiX@operamail.com>  Mon, 23 Feb 2015 00:43:00 +0200
+
+
+desktop-session-antix (0.1.12) unstable; urgency=low
+ 
+  * Disabled yad pop-up
+  * Removed clipit from startup file
+  * Set desktop delay to 1 sec
+  * Removed spacefm -d & from startup file
+  * Remove 'Other' menu category
+  * Edited .desktop files to change Category to Settings
+
+ -- anticapitalista <antiX@operamail.com>  Fri, 13 Feb 2015 22:31:00 +0200
+
+
+desktop-session-antix (0.1.11) unstable; urgency=low
+ 
+  * Spacefm desktop - only 2 icons
+
+ -- anticapitalista <antiX@operamail.com>  Mon, 12 Jan 2015 00:45:00 +0200
+
+
+desktop-session-antix (0.1.10) unstable; urgency=low
+ 
+  * Added clipit to startup file.
+  * Disabled docs pop-up.
+  * Set sleep back to 2 secs.
+
+ -- anticapitalista <antiX@operamail.com>  Fri, 09 Jan 2015 13:10:00 +0200
+
+
 desktop-session-antix (0.1.9) unstable; urgency=low
  
   * Changed icon theme.

@@ -72,14 +72,7 @@
     <Merge type="files"/>
     <Merge type="menus"/>
   </Layout>
-  
-  <!-- Below are the submenus (accessories, games, internet, etc....)
-     They follow the same scheme as above with the exeption of "other".
-     Other contains:
-     <OnlyUnallocated/> 
-     To filter out all the files that are already in a menu. 
-  -->
-   
+
   <!-- "Accessories" Submenu -->
   <Menu>
     <Name>Accessories</Name>

@@ -9,6 +9,7 @@ function update-menu {
             desktop=$(echo $file|cut -d "." -f1)
             echo "Updating $desktop menu"
             desktop-menu --write-out-global --no-display --desktop-code $desktop;
+            jwm -restart
         done
 } 
 

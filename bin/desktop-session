@@ -110,7 +110,7 @@ launch_wm() {
     fi; 
     
     #Display startup notification, and start session (if not in min mode)
-    yad --no-buttons --undecorated --image="info" --text="$text" --text-align="center" --width="400" --center & startup_notification_pid=$! ;
+    #yad --no-buttons --undecorated --image="info" --text="$text" --text-align="center" --width="400" --center & startup_notification_pid=$! ;
     if [ "$im" != "min" ]; then
         if [ -f "~/.$wm/startup.disabled" ]; then
             mv ~/.$wm/startup.disabled ~/.$wm/startup
@@ -177,7 +177,7 @@ launch_desktop() {
         say "Window manager running or setup forced, setting up desktop @ $(cut -d " " -f22 /proc/self/stat)";
         #Delay session startup by the amount the user finds fitting
         say "Delaying session startup by $STARTUP_DELAY seconds";
-        sleep $STARTUP_DELAY;
+        #sleep $STARTUP_DELAY;
         #Start icon manager and set wallpaper
         case $im in
             rox)   echo_bg_cmd rox --pinboard=antiX-$wm  ;;
@@ -187,7 +187,11 @@ launch_desktop() {
         esac
         
         #Set wallpaper
+        sleep $STARTUP_DELAY;
         echo_cmd desktop-session-wallpaper;
+
+        #Build Applications menu here rather than startup file?PB
+        echo_cmd desktop-menu --write-out-global;
         
         #Check if the user would prefer their files not to be updated, if not protected... update or ask to update
         if [ "$SESSION_PROTECT" != "true" ]; then

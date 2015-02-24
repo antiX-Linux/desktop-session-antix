@@ -1,5 +1,3 @@
 #!/bin/bash
-volumeicon &
-desktop-menu --write-out-global 
+volumeicon & 
 fbxkb &
-spacefm -d &
