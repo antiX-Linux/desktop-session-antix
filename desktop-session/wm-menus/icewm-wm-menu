@@ -10,4 +10,4 @@ prog "Rox-Jwm" - /usr/local/lib/desktop-session/desktop-session-restart Rox-Jwm
 prog "Space-Jwm" - /usr/local/lib/desktop-session/desktop-session-restart Space-Jwm
 prog "Jwm" - /usr/local/lib/desktop-session/desktop-session-restart Jwm
 prog "min-Jwm" - /usr/local/lib/desktop-session/desktop-session-restart min-Jwm
-prog "Herbstluftwm" - /usr/local/lib/desktop-session/desktop-session-restart Herbstluftwm
+prog "Herbstluftwm" - /usr/local/lib/desktop-session/desktop-session-restart min-herbstluftwm

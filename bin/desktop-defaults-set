@@ -26,7 +26,7 @@ GetDefaultsInformation() {
  --field="Image Viewer:FL" "$image_viewer" \
  --field="Video Player:FL" "$video_player" \
  --field="Audio Player:FL" "$audio_player" \
- --title="Set Default Applications" --item-separator="|" --width="250");
+ --title="Set Default Applications" --item-separator="|" --width="400");
     checkcancel;
 }
 GetLink() {

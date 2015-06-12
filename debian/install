@@ -12,7 +12,7 @@ desktop-session-lib/*          /usr/local/lib/desktop-session
 locale/*	               /usr/share/locale
 menus/*                        /etc/xdg/menus
 shell/*                        /usr/lib/shell 
-skel/.desktop-session/*        /etc/skel/.desktop-session
+skel/.[a-zA-Z]*                /etc/skel
 templates/*                    /usr/share/desktop-menu/templates 
 changelog.gz                   /usr/share/doc/desktop-session-antix 
 copyright                      /usr/share/doc/desktop-session-antix

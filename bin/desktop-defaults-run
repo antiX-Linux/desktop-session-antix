@@ -50,11 +50,11 @@ case $1 in
 -e|--email)             Desktop_File=$Desktop_Prefix"email.desktop"         ;;
 -te|--text-editor)      Desktop_File=$Desktop_Prefix"editor.desktop"        ;;
 -b|--browser)           Desktop_File=$Desktop_Prefix"web-browser.desktop"   ;;
--i|--images)            Desktop_File=$Desktop_Prefix"image-viewer.desktop" ;;
+-i|--images)            Desktop_File=$Desktop_Prefix"image-viewer.desktop"  ;;
 -v|--video)             Desktop_File=$Desktop_Prefix"video-player.desktop"  ;;
 -a|--audio)             Desktop_File=$Desktop_Prefix"audio-player.desktop"  ;;
--r|--root)				Use_Root=True                                       ;;
--h|--help)              help; exit;  										;;
+-r|--root)		Use_Root=True                                       ;;
+-h|--help)              help; exit;  					    ;;
 *)                      echo "Error: $1 not an option"; help; exit;         ;;
 esac
 

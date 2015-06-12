@@ -1,3 +1,46 @@
+desktop-session-antix (0.2.3) unstable; urgency=low
+ 
+  * Fixed up -h to help and -H to hibernate.
+
+ -- anticapitalista <antiX@operamail.com>  Thu, 04 Jun 2015 00:29:00 +0200
+
+
+desktop-session-antix (0.2.2) unstable; urgency=low
+ 
+  * Added option to turn off yad session notification message
+
+ -- anticapitalista <antiX@operamail.com>  Wed, 20 May 2015 23:52:00 +0200
+
+
+desktop-session-antix (0.2.1) unstable; urgency=low
+ 
+  * Set desktop-session min-herbstluftwm to stop session from loading
+
+ -- anticapitalista <antiX@operamail.com>  Sat, 25 Apr 2015 23:18:00 +0200
+
+
+desktop-session-antix (0.2.0) unstable; urgency=low
+ 
+  * Bump version for antiX-15 release
+  * Include gconf settings for gksu/gksudo
+
+ -- anticapitalista <antiX@operamail.com>  Thu, 02 Apr 2015 23:16:00 +0200
+
+
+desktop-session-antix (0.1.15) unstable; urgency=low
+ 
+  * Moved toram-eject to startup file.
+  * Added search-bar-icon to startup file.
+
+ -- anticapitalista <antiX@operamail.com>  Tue, 31 Mar 2015 13:08:00 +0200
+
+desktop-session-antix (0.1.14) unstable; urgency=low
+ 
+  * Default time set to 2 secs
+
+ -- anticapitalista <antiX@operamail.com>  Wed, 11 Mar 2015 20:21:00 +0200
+
+
 desktop-session-antix (0.1.13) unstable; urgency=low
  
   * Up to date with upstream

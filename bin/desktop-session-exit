@@ -20,7 +20,10 @@ case $1 in
 -L|--lock)
     xlock
     ;;
--h|--hibernate)
+h|--help)
+    help
+    ;;
+-H|--hibernate)
     dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
     ;;
 -s|--shutdown)
