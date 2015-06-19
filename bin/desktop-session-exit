@@ -30,6 +30,7 @@ h|--help)
     if [ -e /live/config/save-persist -o -e /live/config/persist-save.conf ] && which persist-config &> /dev/null; then
         sudo persist-config --shutdown --command poweroff
     else
+        sync
         sudo chvt 1
         sudo poweroff
     fi
@@ -41,6 +42,7 @@ h|--help)
     if [ -e /live/config/save-persist -o -e /live/config/persist-save.conf ] && which persist-config &> /dev/null; then
         sudo persist-config --shutdown --command reboot
     else
+        sync
         sudo chvt 1
         sudo reboot
     fi

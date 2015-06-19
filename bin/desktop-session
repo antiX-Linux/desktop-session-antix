@@ -110,10 +110,14 @@ launch_wm() {
             text="$NOTIFICATION_TEXT"; 
         fi; 
     
-        #Display startup notification, and start session (if not in min mode)
-        yad --no-buttons --undecorated --image="info" --text="$text" --text-align="center" --width="400" --center & startup_notification_pid=$! ;
-        min_check 
-        close_startup_notification &
+        if [ "$text" ]; then
+            #Display startup notification, and start session (if not in min mode)
+            yad --no-buttons --undecorated --image="info" --text="$text" --text-align="center" --width="400" --center & startup_notification_pid=$! ;
+            min_check
+            close_startup_notification &
+        else
+            min_check
+        fi
     else
         min_check
     fi
@@ -167,7 +171,7 @@ launch_desktop() {
     
     #Line from BitJam to merge xresources into the database
     if [[ -z $(xrdb -query ) ]]; then
-        [ -r "$xresources_config" ] && xrdb -merge "$xresources_config"
+        [ -r "$xresources_config" ] && xrdb -merge "$xresources_config" &
     fi
     #end
     

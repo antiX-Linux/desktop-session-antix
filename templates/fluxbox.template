@@ -33,3 +33,7 @@ App_File = menu-applications
 
 #User Config dir
 Conf_Dir = .fluxbox
+
+#Restart Command
+#Enter a command to restart if needed, leave blank if not.
+Restart_Command = 

@@ -1,3 +1,10 @@
+desktop-session-antix (0.2.4) unstable; urgency=low
+ 
+  * Fixed out of X ugly gtk messages.
+
+ -- anticapitalista <antiX@operamail.com>  Sat, 13 Jun 2015 10:54:00 +0200
+
+
 desktop-session-antix (0.2.3) unstable; urgency=low
  
   * Fixed up -h to help and -H to hibernate.

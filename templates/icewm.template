@@ -33,3 +33,7 @@ App_File = menu-applications
 
 #User Config Dir
 Conf_Dir = .icewm
+
+#Restart Command
+#Enter a command to restart if needed, leave blank if not.
+Restart_Command = 
