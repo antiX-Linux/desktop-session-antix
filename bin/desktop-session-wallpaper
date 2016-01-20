@@ -15,7 +15,7 @@ random_select() {
 
 wallpaper_set() {
     
-    wallpaper=${wallpaper:-$(cat $wallpaper_list_conf | grep "^$code" |cut -d '=' -f2 |sed "s/\ /\\\ /ig")}
+    wallpaper=${wallpaper:-$(cat $wallpaper_list_conf | grep "^$code" |cut -d '=' -f2 )} #|sed "s/\ /\\\ /ig")}
     
     case $im in
         rox)

@@ -1,3 +1,17 @@
+desktop-session-antix (0.2.7) unstable; urgency=medium
+ 
+  * Fix broken sym links in /usr/share/desktop-defaults (audio, email,video).
+
+ -- anticapitalista <antiX@operamail.com>  Wed, 20 Jan 2016 17:36:00 +0200
+
+
+desktop-session-antix (0.2.6) unstable; urgency=low
+ 
+  * Turn off yad startup message at login.
+
+ -- anticapitalista <antiX@operamail.com>  Wed, 30 Dec 2015 23:26:00 +0200
+
+
 desktop-session-antix (0.2.4) unstable; urgency=low
  
   * Fixed out of X ugly gtk messages.
