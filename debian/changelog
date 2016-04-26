@@ -1,3 +1,29 @@
+desktop-session-antix (0.2.7.4) unstable; urgency=medium
+
+  * Removed Installer from spacefm desktop 
+
+ -- anticapitalista <antix@operamail.com>  Tue, 19 Apr 2016 16:34:29 +0300
+
+desktop-session-antix (0.2.7.3) unstable; urgency=medium
+
+  * Ready for antiX-16 
+
+ -- anticapitalista <antix@operamail.com>  Sun, 17 Apr 2016 20:31:54 +0300
+
+desktop-session-antix (0.2.7.2) unstable; urgency=medium
+ 
+  * dave's fixes.
+
+ -- anticapitalista <antiX@operamail.com>  Mon, 25 Jan 2016 17:08:00 +0200
+
+
+desktop-session-antix (0.2.7.1) unstable; urgency=medium
+ 
+  * chown files in /usr/share/desktop-menu/$wm to $username:$username.
+
+ -- anticapitalista <antiX@operamail.com>  Wed, 20 Jan 2016 20:45:00 +0200
+
+
 desktop-session-antix (0.2.7) unstable; urgency=medium
  
   * Fix broken sym links in /usr/share/desktop-defaults (audio, email,video).

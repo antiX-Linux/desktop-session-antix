@@ -1,0 +1,14 @@
+/etc/apt/apt.conf.d/99-update-menus
+/etc/apt/apt.conf.d/99-update-slim
+/etc/desktop-session/desktop-defaults.conf
+/etc/desktop-session/desktop-session.conf
+/etc/desktop-session/file_compare
+/etc/desktop-session/startup
+/etc/desktop-session/wallpaper-list.conf
+/etc/desktop-session/wallpaper.conf
+/etc/skel/.desktop-session/default-desktop
+/etc/skel/.gconf/apps/%gconf.xml
+/etc/skel/.gconf/apps/gksu/%gconf.xml
+/etc/xdg/menus/TCM-MENU.menu
+/etc/xdg/menus/desktop-menu.menu
+/etc/xdg/menus/user-dirs.conf
