@@ -1,3 +1,9 @@
+desktop-session-antix (0.2.7.5) unstable; urgency=medium
+
+  * Move /etc/desktop-session to skel 
+
+ -- anticapitalista <antix@operamail.com>  Thu, 28 Apr 2016 18:58:01 +0300
+
 desktop-session-antix (0.2.7.4) unstable; urgency=medium
 
   * Removed Installer from spacefm desktop 

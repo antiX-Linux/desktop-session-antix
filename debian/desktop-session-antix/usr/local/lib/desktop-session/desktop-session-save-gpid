@@ -1,7 +1,0 @@
-#!/bin/bash
-
-. /usr/local/lib/desktop-session/lib-desktop-session.sh
-
-gpid=$(cut -d" " -f5 /proc/$$/stat)
-echo "$ME: save gpid: $gpid" >> $log_file
-echo $gpid > $user_dts_dir/startup-gpid.$disp

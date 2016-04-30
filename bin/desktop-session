@@ -270,11 +270,11 @@ launch_desktop() {
         #Check if the user would like to run the session specific conky or not.
         if [ "$LOAD_CONKY" = "true" ]; then
             if [ -f "$conky_dir/$wm-conkyrc" ]; then
-                echo_cmd sleep $STARTUP_DELAY && conky -c $conky_dir/$wm-conkyrc
+                echo_cmd conky -c $conky_dir/$wm-conkyrc
             else
-                echo_cmd sleep $STARTUP_DELAY && conky
+                echo_cmd conky
             fi
-            echo_cmd sleep $STARTUP_DELAY && wmctrl -F -r "Conky ($(hostname))" -b add,below &
+            echo_cmd wmctrl -F -r "Conky ($(hostname))" -b add,below &
         fi
         
         #Finally Set the screen blank time / screen saver

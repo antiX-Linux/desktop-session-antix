@@ -1,9 +1,0 @@
-// Automatically update antiX menus after installing a program
-
-DPkg
-{
-Pre-Invoke {"/usr/local/lib/desktop-menu/desktop-menu-apt-update set";};
-Post-Invoke {"/usr/local/lib/desktop-menu/desktop-menu-apt-update check";};
-};
-
-
