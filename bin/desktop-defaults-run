@@ -2,9 +2,12 @@
 
 . /usr/local/lib/desktop-session/lib-desktop-session.sh
 . /usr/local/lib/desktop-session/desktop-session-file-locations.sh
+
 #Export for gtk
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0";
+
 fallback_fm="rox-filer"
+IFS=
 
 help() {
 cat <<Help
@@ -23,85 +26,63 @@ Help:
 Help
 }
 
-function run_case {
-args=$(echo "$@" |sed "s/$1//ig")
-
-case $1 in 
--fm|--file-manager)
-    Desktop_File=$Desktop_Prefix"file-manager.desktop"
-    if ( grep "$ME -fm --follow" $Desktop_File > /dev/null 2>&1 ) || [ "$2" = "--follow" ]; then
-        args=$(echo "$args" |sed "s/--follow//ig")
-        case `head -1 $desktop_file` in
-        rox-*)
-            Exec="rox-filer"
-            ;;
-        space-*)
-            Exec="spacefm"
-            ;;
-        *)
-            Exec="$fallback_fm"
-            ;;
-        esac
-    fi
-    ;;
--t|--terminal)          Desktop_File=$Desktop_Prefix"terminal.desktop"      
-                        if [ -n "$args" ]; then
-                        args="-e $args"
-                        fi;;
--e|--email)             Desktop_File=$Desktop_Prefix"email.desktop"         ;;
--te|--text-editor)      Desktop_File=$Desktop_Prefix"editor.desktop"        ;;
--b|--browser)           Desktop_File=$Desktop_Prefix"web-browser.desktop"   ;;
--i|--images)            Desktop_File=$Desktop_Prefix"image-viewer.desktop" ;;
--v|--video)             Desktop_File=$Desktop_Prefix"video-player.desktop"  ;;
--a|--audio)             Desktop_File=$Desktop_Prefix"audio-player.desktop"  ;;
--r|--root)              Use_Root=True                                       ;;
--h|--help)              help; exit;                                         ;;
-*)                      echo "Error: $1 not an option"; help; exit;         ;;
-esac
-
-}
-
 ME=${0##*/}
- 
-#Desktop_Prefix="/usr/share/applications/desktop-defaults-"
-if [ -d ~/.local/share/desktop-defaults/ ]; then
-    Desktop_Prefix="$HOME/.local/share/desktop-defaults/"
-else
-    Desktop_Prefix="/usr/share/desktop-defaults/"
+
+for i in "$@"
+do
+  case $i in 
+    -fm|--file-manager)  Desktop_File="file-manager.desktop" ;;
+    -t|--terminal)       Desktop_File="terminal.desktop"     
+                         xtraargs="-e"                       ;;
+    -e|--email)          Desktop_File="email.desktop"        ;;
+    -te|--text-editor)   Desktop_File="editor.desktop"       ;;
+    -b|--browser)        Desktop_File="web-browser.desktop"  ;;
+    -i|--images)         Desktop_File="image-viewer.desktop" ;;
+    -v|--video)          Desktop_File="video-player.desktop" ;;
+    -a|--audio)          Desktop_File="audio-player.desktop" ;;
+    -r|--root)           exec_root='1'                       ;;
+    --follow)            fm_follow='1'                       ;;
+    -h|--help)           help; exit;                         ;;
+    *)                   arg=`echo "$i" |sed 's/\ /\\\ /ig'` && 
+                         args="$args $arg"                   ;;
+  esac
+done
+
+if [ -z $Desktop_File ]; then
+  echo "Need to specify an application to run";
+  exit 1 
 fi
 
-if [ "$1" = "-r" ]; then
-    root_clean=$(echo "$@" |sed "s/$1//ig")
-    run_case $root_clean
-    run_as_root=True
+if [ -r $HOME/.local/share/desktop-defaults/$Desktop_File ]; then
+  Desktop_File="$HOME/.local/share/desktop-defaults/$Desktop_File"
 else
-    run_case $@
+  Desktop_File="/usr/share/desktop-defaults/$Desktop_File"
 fi
 
-if [ ! -r "$Desktop_File" ]; then
-    echo "$Desktop_File is not readable or does not exist";
-    exit;
+if [ "$fm_follow" = 1 ]; then
+  case `head -1 $desktop_file` in
+    rox-*)   Exec="rox-filer"    ;;
+    space-*) Exec="spacefm"      ;;
+    *)       Exec="$fallback_fm" ;;
+  esac
+else
+  Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2  |sed "s/%.*//ig")} 
 fi
 
-if [ "$run_as_root" = "True" ]; then
-    Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |sed "s/%.*//ig" ) } 
-    if [[ "$Exec" =~ "$ME" ]]; then
-        yad --image="error" --text="The program being started is myself. \n You will need to select a program other than me." --button="OK:0" 2>/dev/null&
-        exit
-    else
-        echo "$Exec"
-        $(gksu "$Exec $args") &
-        exit
-    fi
+if [[ "$Exec" =~ "$ME" ]] && [ -n "$fm_follow" ]; then
+  yad --image="error" --text="The program being started is myself. \n You will need to select a program other than me." --button="OK:0" 2>/dev/null &
+  exit 1
 else
-    Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2 |sed "s/%.*//ig" ) }
-    if [[ "$Exec" =~ "$ME" ]]; then
-        yad --image="error" --text="The program being started is myself. \n You will need to select a program other than me." --button="OK:0" 2>/dev/null &
-        exit
-    else
-        echo "$Exec"
-        $($Exec $args) &
-        exit
-    fi
+  #IFS="|"
+  if [ -z "$args" ]; then xtraargs=""; fi
+  if [ "$exec_root" = 1 ]; then
+    gksu -u root "$Exec $xtraargs $args" 2>/dev/null &
     exit
+  else
+    echo "$Exec $xtraargs $args"
+    gksu -u $(whoami) "$Exec $xtraargs $args" 2>/dev/null &
+    exit
+  fi
 fi
+
+

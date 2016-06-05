@@ -55,6 +55,7 @@ GetOldDefaults() {
     video_player=$LINK;
     GetLink 'audio-player.desktop'
     audio_player=$LINK;
+
 }
 
 UpdateMime() {
