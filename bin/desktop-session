@@ -201,8 +201,8 @@ launch_desktop() {
         sleep $STARTUP_DELAY;
         echo_cmd desktop-session-wallpaper;
 
-        #Build Applications menu here rather than startup file?PB
-        echo_cmd desktop-menu --write-out-global;
+        #Only run if non-English menu is needed
+        test -e /etc/live/config/lang && ! grep -q '^WM_LANG="en"' /etc/live/config/lang && echo_cmd desktop-menu --write-out-global
         
         #Check if the user would prefer their files not to be updated, if not protected... update or ask to update
         if [ "$SESSION_PROTECT" != "true" ]; then
@@ -263,8 +263,8 @@ launch_desktop() {
             if [ -f "$user_startup_file" ]; then
                 echo_bg_cmd $user_startup_file;
             else
-			    echo_bg_cmd $main_startup_file;
-			fi
+	        echo_bg_cmd $main_startup_file;
+	    fi
         fi
         
         #Check if the user would like to run the session specific conky or not.

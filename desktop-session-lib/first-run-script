@@ -1,4 +1,3 @@
 #!/bin/bash
 cp /usr/share/applications/antix/file-manager.desktop $XDG_DESKTOP_DIR 
 cp /usr/share/applications/antix/antiX-docs.desktop $XDG_DESKTOP_DIR 
-#cp /usr/share/applications/antix/antixsources.desktop $XDG_DESKTOP_DIR
