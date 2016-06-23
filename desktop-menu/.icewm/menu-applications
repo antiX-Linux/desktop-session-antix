@@ -2,6 +2,7 @@
 menu "Accessories" /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-accessories.png { 
 prog "Archive Manager" /usr/share/icons/Faenza-Cupertino-mini/apps/32/file-roller.png file-roller 
 prog "Calculator" /usr/share/icons/Faenza-Cupertino-mini/apps/48/calc.png xcalc
+prog "Calcurse" /usr/share/icons/Faenza-Cupertino-mini/apps/48/evolution-calendar.png desktop-defaults-run -t calcurse
 prog "CherryTree" /usr/share/icons/Faenza-Cupertino-mini/apps/48/cherrytree.png cherrytree 
 prog "ClipIt" /usr/share/icons/Faenza-Cupertino-mini/apps/48/clipit-trayicon.png clipit
 prog "Leafpad" /usr/share/icons/Faenza-Cupertino-mini/apps/32/leafpad.png leafpad 
@@ -34,9 +35,9 @@ prog "Connectshares Configuration" /usr/share/pixmaps/connectshares-config.png c
 prog "Dillo" /usr/share/pixmaps/dillo.png dillo 
 prog "Disconnectshares" /usr/share/pixmaps/disconnectshares.png disconnectshares
 prog "Droopy" /usr/share/pixmaps/droopy.png droopy.sh
+prog "Firefox ESR" /usr/share/icons/hicolor/32x32/apps/firefox-esr.png firefox-esr 
 prog "gFTP" /usr/share/pixmaps/gftp.png gftp-gtk 
 prog "HexChat" /usr/share/icons/Faenza-Cupertino-mini/apps/48/hexchat.png hexchat 
-prog "Iceweasel" /usr/share/icons/Faenza-Cupertino-mini/apps/32/iceweasel.png iceweasel 
 prog "Links 2" /usr/share/pixmaps/links2.xpm xlinks2
 prog "Search Bar" /usr/local/share/icons/search-bar/eye-icon.png search-bar
 prog "Transmission" /usr/share/icons/Faenza-Cupertino-mini/apps/32/transmission.png transmission-gtk 
@@ -61,7 +62,7 @@ prog "GNOME MPlayer" /usr/share/icons/Faenza-Cupertino-mini/apps/32/gnome-mplaye
 prog "guvcview" /usr/share/pixmaps/guvcview/guvcview.png guvcview
 prog "SMTube" /usr/share/icons/hicolor/32x32/apps/smtube.png smtube
 prog "Streamlight" /usr/share/pixmaps/streamlight-gui-launcher.png streamlight-gui-launcher.sh
-prog "streamtuner2" /usr/share/pixmaps/streamtuner2.xpm streamtuner2
+prog "streamtuner2" /usr/share/pixmaps/streamtuner2.png streamtuner2
 prog "WinFF" /usr/share/icons/hicolor/32x32/apps/winff.png winff
 prog "xmms" /usr/share/icons/xmms.png xmms
 }
@@ -86,6 +87,7 @@ menu "Preferences" /usr/share/icons/Faenza-Cupertino-mini/categories/32/preferen
 prog "Add Menu Item" /usr/share/icons/Faenza-Cupertino-mini/categories/32/gnome-control-center.png add-desktop
 prog "Adobe Flash Player" /usr/share/icons/Faenza-Cupertino-mini/apps/32/flash-player-properties.png flash-player-properties
 prog "ADSL/PPPOE configuration" /usr/share/pixmaps/pppoeconf.xpm desktop-defaults-run -t /usr/sbin/pppoeconf
+prog "Alternatives Configurator" /usr/share/pixmaps/galternatives.png /usr/sbin/galternatives
 prog "Customize Look and Feel" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png lxappearance
 prog "Menu Manager" /usr/share/pixmaps/menu_manager.png sudo menu_manager.sh
 prog "Remove Menu Item" /usr/share/icons/Faenza-Cupertino-mini/devices/48/computer.png remove-desktop

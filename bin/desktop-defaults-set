@@ -103,7 +103,7 @@ SetDefaults() {
     #So it must be set after the web browser
     #The number corresponds to the order in the yad dialog
     MakeLinks 1 "terminal.desktop" 
-    MakeLinks 2 "web-browser.desktop" #Web browser before can display files / emails / text / images therefor it must be before
+    MakeLinks 2 "web-browser.desktop" #Web browser before can display files / emails / text / images therefore it must be before
     MakeLinks 3 "file-manager.desktop" 
     MakeLinks 4 "email.desktop"
     MakeLinks 5 "editor.desktop"

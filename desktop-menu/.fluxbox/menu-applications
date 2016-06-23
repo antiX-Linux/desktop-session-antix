@@ -2,6 +2,7 @@
 [submenu] (Accessories) </usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-accessories.png>  
 [exec] (Archive Manager) {file-roller } </usr/share/icons/Faenza-Cupertino-mini/apps/32/file-roller.png>
 [exec] (Calculator) {xcalc} </usr/share/icons/Faenza-Cupertino-mini/apps/48/calc.png>
+[exec] (Calcurse) {desktop-defaults-run -t calcurse} </usr/share/icons/Faenza-Cupertino-mini/apps/48/evolution-calendar.png>
 [exec] (CherryTree) {cherrytree } </usr/share/icons/Faenza-Cupertino-mini/apps/48/cherrytree.png>
 [exec] (ClipIt) {clipit} </usr/share/icons/Faenza-Cupertino-mini/apps/48/clipit-trayicon.png>
 [exec] (Leafpad) {leafpad } </usr/share/icons/Faenza-Cupertino-mini/apps/32/leafpad.png>
@@ -34,9 +35,9 @@
 [exec] (Dillo) {dillo } </usr/share/pixmaps/dillo.png>
 [exec] (Disconnectshares) {disconnectshares} </usr/share/pixmaps/disconnectshares.png>
 [exec] (Droopy) {droopy.sh} </usr/share/pixmaps/droopy.png>
+[exec] (Firefox ESR) {firefox-esr } </usr/share/icons/hicolor/32x32/apps/firefox-esr.png>
 [exec] (gFTP) {gftp-gtk } </usr/share/pixmaps/gftp.png>
 [exec] (HexChat) {hexchat } </usr/share/icons/Faenza-Cupertino-mini/apps/48/hexchat.png>
-[exec] (Iceweasel) {iceweasel } </usr/share/icons/Faenza-Cupertino-mini/apps/32/iceweasel.png>
 [exec] (Links 2) {xlinks2} </usr/share/pixmaps/links2.xpm>
 [exec] (Search Bar) {search-bar} </usr/local/share/icons/search-bar/eye-icon.png>
 [exec] (Transmission) {transmission-gtk } </usr/share/icons/Faenza-Cupertino-mini/apps/32/transmission.png>
@@ -61,7 +62,7 @@
 [exec] (guvcview) {guvcview} </usr/share/pixmaps/guvcview/guvcview.png>
 [exec] (SMTube) {smtube} </usr/share/icons/hicolor/32x32/apps/smtube.png>
 [exec] (Streamlight) {streamlight-gui-launcher.sh} </usr/share/pixmaps/streamlight-gui-launcher.png>
-[exec] (streamtuner2) {streamtuner2} </usr/share/pixmaps/streamtuner2.xpm>
+[exec] (streamtuner2) {streamtuner2} </usr/share/pixmaps/streamtuner2.png>
 [exec] (WinFF) {winff} </usr/share/icons/hicolor/32x32/apps/winff.png>
 [exec] (xmms) {xmms} </usr/share/icons/xmms.png>
 [end]
@@ -86,6 +87,7 @@
 [exec] (Add Menu Item) {add-desktop} </usr/share/icons/Faenza-Cupertino-mini/categories/32/gnome-control-center.png>
 [exec] (Adobe Flash Player) {flash-player-properties} </usr/share/icons/Faenza-Cupertino-mini/apps/32/flash-player-properties.png>
 [exec] (ADSL/PPPOE configuration) {desktop-defaults-run -t /usr/sbin/pppoeconf} </usr/share/pixmaps/pppoeconf.xpm>
+[exec] (Alternatives Configurator) {/usr/sbin/galternatives} </usr/share/pixmaps/galternatives.png>
 [exec] (Customize Look and Feel) {lxappearance} </usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png>
 [exec] (Menu Manager) {sudo menu_manager.sh} </usr/share/pixmaps/menu_manager.png>
 [exec] (Remove Menu Item) {remove-desktop} </usr/share/icons/Faenza-Cupertino-mini/devices/48/computer.png>

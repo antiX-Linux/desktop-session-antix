@@ -1,6 +1,20 @@
+desktop-session-antix (0.2.7.13) unstable; urgency=medium
+
+  * Correct default menu-applications for jwm 
+
+ -- anticapitalista <antix@operamail.com>  Tue, 21 Jun 2016 16:08:11 +0300
+
+desktop-session-antix (0.2.7.12) unstable; urgency=medium
+
+  * Start desktop-menu before startup delay
+  * Improvements to desktop-menu fix to not run if English is default
+
+ -- anticapitalista <antix@operamail.com>  Fri, 10 Jun 2016 14:10:30 +0300
+
 desktop-session-antix (0.2.7.11) unstable; urgency=medium
 
-  * Moved desktop-menu --write-out-global to first-run script 
+  * Added bootchart to startup
+  * desktop-menu fix to not run if English is default
 
  -- anticapitalista <antix@operamail.com>  Mon, 06 Jun 2016 19:24:35 +0300
 

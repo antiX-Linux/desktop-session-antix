@@ -14,12 +14,17 @@ automount-antix &
 # Uncomment the following line to mount Samba and/or NFS shares
 #connectshares &
 
+# Uncomment to use clipboard manager
+#clipit &
+
 # Uncomment to show wicd networking monitor
 #wicd-client -t &
 
 # Create a bootchart image if bootchart was run
- (sleep 6 && test -e /var/log/bootchart.tgz && ! test -e ~/bootchart.png \
-     && pybootchartgui) &
+test -e /etc/live/config/bootchart \
+    && (sleep 6 && test -e /var/log/bootchart.tgz \
+        && ! test -e ~/bootchart.png \
+        && pybootchartgui)&
 
 # Used on live system only
 (sleep 5 && toram-eject) &
