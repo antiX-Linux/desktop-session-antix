@@ -1,3 +1,9 @@
+desktop-session-antix (0.2.7.14) unstable; urgency=medium
+
+  * typo in wm-menus jwm herbstluftwm 
+
+ -- anticapitalista <antix@operamail.com>  Sun, 26 Jun 2016 17:47:41 +0300
+
 desktop-session-antix (0.2.7.13) unstable; urgency=medium
 
   * Correct default menu-applications for jwm 
