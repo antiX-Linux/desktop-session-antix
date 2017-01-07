@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Remove Menu Item
+Comment= Remove a Menu Item
+Exec=remove-desktop
+Icon=/usr/share/icons/Faenza-Cupertino-mini/devices/48/computer.png
+Terminal=false
+Type=Application
+Categories=X-antiX;Settings;
+NoDisplay=False

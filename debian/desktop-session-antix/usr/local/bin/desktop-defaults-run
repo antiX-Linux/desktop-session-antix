@@ -1,0 +1,88 @@
+#!/bin/bash
+
+. /usr/local/lib/desktop-session/lib-desktop-session.sh
+. /usr/local/lib/desktop-session/desktop-session-file-locations.sh
+
+#Export for gtk
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0";
+
+fallback_fm="rox-filer"
+IFS=
+
+help() {
+cat <<Help
+Help:
+-fm | --file-manager    Start the default file manager
+      --follow          Set Default file manager to follow 
+                        session icon manager / fm
+-t  | --terminal        Start the default terminal emulator
+-e  | --email           Start the default email client
+-te | --text-editor     Start the default text editor
+-b  | --browser         Start the default web browser
+-i  | --images          Start the default image viewer
+-v  | --video           Start the default video player
+-a  | --audio           Start the default audio player
+-r  | --root            Start the user default as root user
+Help
+}
+
+ME=${0##*/}
+
+for i in "$@"
+do
+  case $i in 
+    -fm|--file-manager)  Desktop_File="file-manager.desktop" ;;
+    -t|--terminal)       Desktop_File="terminal.desktop"     
+                         xtraargs="-e"                       ;;
+    -e|--email)          Desktop_File="email.desktop"        ;;
+    -te|--text-editor)   Desktop_File="editor.desktop"       ;;
+    -b|--browser)        Desktop_File="web-browser.desktop"  ;;
+    -i|--images)         Desktop_File="image-viewer.desktop" ;;
+    -v|--video)          Desktop_File="video-player.desktop" ;;
+    -a|--audio)          Desktop_File="audio-player.desktop" ;;
+    -r|--root)           exec_root='1'                       ;;
+    --follow)            fm_follow='1'                       ;;
+    -h|--help)           help; exit;                         ;;
+    *)                   arg=`echo "$i" |sed 's/\ /\\\ /ig'` && 
+                         args="$args $arg"                   ;;
+  esac
+done
+
+if [ -z $Desktop_File ]; then
+  echo "Need to specify an application to run";
+  exit 1 
+fi
+
+if [ -r $HOME/.local/share/desktop-defaults/$Desktop_File ]; then
+  Desktop_File="$HOME/.local/share/desktop-defaults/$Desktop_File"
+else
+  Desktop_File="/usr/share/desktop-defaults/$Desktop_File"
+fi
+
+if [ "$fm_follow" = 1 ]; then
+  case `head -1 $desktop_file` in
+    rox-*)   Exec="rox-filer"    ;;
+    space-*) Exec="spacefm"      ;;
+    *)       Exec="$fallback_fm" ;;
+  esac
+else
+  Exec=${Exec:-$(grep "^Exec" $Desktop_File |head -1|cut -d "=" -f2  |sed "s/%.*//ig")} 
+fi
+
+if [[ "$Exec" =~ "$ME" ]] && [ -n "$fm_follow" ]; then
+  yad --image="error" --text="The program being started is myself. \n You will need to select a program other than me." --button="OK:0" 2>/dev/null &
+  exit 1
+else
+  #IFS="|"
+  if [ -z "$args" ]; then xtraargs=""; fi
+  if [ "$exec_root" = 1 ]; then
+    gksu -u root "$Exec $xtraargs $args" 2>/dev/null &
+    exit
+  else
+    echo "$Exec $xtraargs $args"
+    gksu -u $(whoami) "$Exec $xtraargs $args" 2>/dev/null &
+    exit
+  fi
+fi
+
+

@@ -1,3 +1,16 @@
+desktop-session-antix (0.2.7.16) unstable; urgency=medium
+
+  * Removed herbstluftwm from menu
+  * apt triggers updatedb along with menu updates - skidoo
+
+ -- anticapitalista <antix@operamail.com>  Thu, 05 Jan 2017 23:36:30 +0200
+
+desktop-session-antix (0.2.7.15) unstable; urgency=medium
+
+  * Updated menu-applications files to include live-usb-maker and live-kernel-updater
+
+ -- anticapitalista <antix@operamail.com>  Sat, 05 Nov 2016 14:35:35 +0200
+
 desktop-session-antix (0.2.7.14) unstable; urgency=medium
 
   * typo in wm-menus jwm herbstluftwm 

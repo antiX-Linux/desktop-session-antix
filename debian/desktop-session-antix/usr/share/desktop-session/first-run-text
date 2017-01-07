@@ -1,0 +1,23 @@
+Yeah this is the first run!
+
+With live the xdg autostart compliance is turned off. This is to 
+avoid several nagging windows at startup. If you are running an 
+install or live usb, you may wish to enable the xdg autostart 
+compliance. To do this 
+Access the desktop menu
+Select "Desktop"
+Select "Session Settings (Global)"
+Enter "YOUR ROOT PASSWORD" and press "OK"
+Find:
+LOAD_XDG_AUTOSTART="false"
+and change to 
+LOAD_XDG_AUTOSTART="true"
+Save the change
+
+Now next time you restart your session xdg autostart compliance 
+will be enabled.
+
+There are several other interesting features and programs such
+ as the metapackage installer, antiX Control Center, and 
+ connect shares. If you would like to know more of the features
+ and programs, visit the help section of the desktop menu.

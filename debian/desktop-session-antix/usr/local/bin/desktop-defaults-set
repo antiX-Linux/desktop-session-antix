@@ -1,0 +1,117 @@
+#!/bin/bash
+
+function checkcancel {
+	CANOK="$?";
+    if [ "$CANOK" != "0" ]; then
+    exit;
+    fi
+}
+
+GetDefaultsInformation() {
+    app_dir="/usr/share/applications/*"
+    file_manager=${file_manager:-$app_dir}
+    terminal=${terminal:-$app_dir}
+    email=${email:-$app_dir}
+    text_editor=${text_editor:-$app_dir}
+    web_browser=${web_browser:-$app_dir}
+    image_viewer=${image_viewer:-$app_dir}
+    video_player=${video_player:-$app_dir}
+    audio_player=${audio_player:-$app_dir}
+    app_info=$(yad --form \
+ --field="Terminal:FL" "$terminal" \
+ --field="Web Browser:FL" "$web_browser" \
+ --field="File Manager:FL" "$file_manager" \
+ --field="Email Client:FL" "$email" \
+ --field="Text Editor:FL" "$text_editor" \
+ --field="Image Viewer:FL" "$image_viewer" \
+ --field="Video Player:FL" "$video_player" \
+ --field="Audio Player:FL" "$audio_player" \
+ --title="Set Default Applications" --item-separator="|" --width="400");
+    checkcancel;
+}
+GetLink() {
+    LINK=$(ls -l $Desktop_Prefix"$1"| cut -d '>' -f2 |cut -d " " -f2);
+    }
+
+GetOldDefaults() {
+    if [ -d ~/.local/share/desktop-defaults/ ]; then
+        Desktop_Prefix="$HOME/.local/share/desktop-defaults/"
+    else
+        Desktop_Prefix="/usr/share/desktop-defaults/"
+    fi
+    GetLink 'file-manager.desktop'
+    file_manager=$LINK;
+    GetLink 'terminal.desktop'
+    terminal=$LINK;
+    GetLink 'email.desktop'
+    email=$LINK;
+    GetLink 'editor.desktop'
+    text_editor=$LINK;
+    GetLink 'web-browser.desktop'
+    web_browser=$LINK;
+    GetLink 'image-viewer.desktop'
+    image_viewer=$LINK
+    GetLink 'video-player.desktop'
+    video_player=$LINK;
+    GetLink 'audio-player.desktop'
+    audio_player=$LINK;
+
+}
+
+UpdateMime() {
+    FilePath="$1"
+    BaseName=${FilePath##*/}
+
+    for line in $(cat $local_mime_file | grep "$BaseName" |grep -v "=$BaseName")
+    do
+        begining=$(echo "$line" | cut -d "=" -f1)
+        end=$(echo "$line" | cut -d "=" -f2|sed "s/$BaseName;//ig")
+        end="$BaseName;$end"
+        new_line="$begining=$end"
+        search-and-replace.py --file="$local_mime_file" --from="$line" --to="$new_line"
+    done
+
+    }
+    
+MakeLinks() {
+    LinkFrom=$(echo $app_info |cut -d "|" -f"$1")
+    LinkTo=$Desktop_Prefix"$2"
+    if [ -f "$LinkTo" ]; then
+        rm $LinkTo
+    fi
+    ln -s $LinkFrom $LinkTo 2>/dev/null
+    UpdateMime $LinkFrom
+    }
+
+
+SetDefaults() {
+    Desktop_Prefix="$HOME/.local/share/desktop-defaults/"
+    if [ ! -d "$Desktop_Prefix" ]; then
+        mkdir -p $Desktop_Prefix 2>/dev/null;
+    fi
+    
+    global_mime_file="/usr/share/applications/mimeinfo.cache"
+    local_mime_file="$HOME/.local/share/applications/mimeinfo.cache"
+    if [ ! -d "$local_mime_file" ]; then
+        mkdir -p ${local_mime_file%/*}
+    fi
+    cp $global_mime_file $local_mime_file
+    
+    #Ordered so that we do not set the default applications on top of each other
+    #Example iceweasel can view images therefor it is an application in image/* mime types
+    #However in that case we would like the image viewer we choose to be default
+    #So it must be set after the web browser
+    #The number corresponds to the order in the yad dialog
+    MakeLinks 1 "terminal.desktop" 
+    MakeLinks 2 "web-browser.desktop" #Web browser before can display files / emails / text / images therefore it must be before
+    MakeLinks 3 "file-manager.desktop" 
+    MakeLinks 4 "email.desktop"
+    MakeLinks 5 "editor.desktop"
+    MakeLinks 6 "image-viewer.desktop"
+    MakeLinks 7 "video-player.desktop" #Most video players can play simple audio files therefor the video player must be set before the audio player
+    MakeLinks 8 "audio-player.desktop"
+}
+
+GetOldDefaults;
+GetDefaultsInformation;
+SetDefaults;
