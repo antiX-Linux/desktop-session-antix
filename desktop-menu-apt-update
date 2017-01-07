@@ -36,3 +36,4 @@ force)
     echo "force - forces an update"
 ;;
 esac
+
