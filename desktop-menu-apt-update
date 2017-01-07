@@ -3,7 +3,15 @@
 app_dir="/usr/share/applications";
 tmp_compare="/tmp/applications-modified-time";
 
-case $1 in 
+
+freshendb () {
+    # freshen the mlocate database
+    if [ -f /var/lib/mlocate/mlocate.db ]; then
+        updatedb;
+    fi
+}
+
+case $1 in
 set)
     stat -c %Y $app_dir > $tmp_compare;
 ;;
@@ -11,13 +19,15 @@ check)
     current_date=$(stat -c %Y $app_dir)
     past_date=$(cat $tmp_compare)
     if [ "$current_date" != "$past_date" ]; then
-        desktop-menu --write-out-global;
-    else 
+        /usr/local/bin/desktop-menu --write-out-global;
+        freshendb;
+    else
         exit 0
     fi
 ;;
 force)
-    desktop-menu --write-out-global;
+    /usr/local/bin/desktop-menu --write-out-global;
+    freshendb;
 ;;
 *)
     echo "Not an option";
@@ -26,4 +36,3 @@ force)
     echo "force - forces an update"
 ;;
 esac
-
