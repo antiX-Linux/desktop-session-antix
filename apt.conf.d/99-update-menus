@@ -6,4 +6,3 @@ Pre-Invoke {"/usr/local/lib/desktop-menu/desktop-menu-apt-update set";};
 Post-Invoke {"/usr/local/lib/desktop-menu/desktop-menu-apt-update check";};
 };
 
-
