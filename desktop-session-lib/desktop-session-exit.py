@@ -74,14 +74,12 @@ class mainWindow():
         self.rightbox.show()
 
         self.build_button(ICONS+"/lock.svg","Lock Screen","desktop-session-exit -L","left")
-        self.build_button(ICONS+"/hibernate.svg","Hibernate","desktop-session-exit -h","left")
+        self.build_button(ICONS+"/upgrade.svg","Restart Session","desktop-session-exit -R","left") 
         self.build_button(ICONS+"/reboot.svg","Reboot","desktop-session-exit -r","left")
         
         self.build_button(ICONS+"/logout.svg","Log Out","desktop-session-exit -l","right")
         self.build_button(ICONS+"/suspend.svg","Suspend","desktop-session-exit -S","right")
         self.build_button(ICONS+"/shutdown.svg","Shutdown","desktop-session-exit -s","right")
-        
-        self.build_button(ICONS+"/upgrade.svg","Restart Session","desktop-session-exit -R","main") 
         
         window.show()
 

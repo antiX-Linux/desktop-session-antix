@@ -5,8 +5,8 @@ volumeicon &
 # Enable/Disable automounting
 automount-antix &
 
-# Puts a flag on the taskbar to show which keyboard is being used.
-#fbxkb &
+# Puts a flag on the taskbar to show which keyboard is being used if more than 1 keyboard layout is detected
+fbxkb-start &
 
 # Uncomment for easy search from the taskbar
 #search-bar-icon &

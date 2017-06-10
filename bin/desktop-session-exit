@@ -23,9 +23,9 @@ case $1 in
 h|--help)
     help
     ;;
--H|--hibernate)
-    dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
-    ;;
+#-H|--hibernate)
+#    sudo pm-hibernate
+#    ;;
 -s|--shutdown)
     if [ -e /etc/live/config/save-persist -o -e /live/config/persist-save.conf ] && which persist-config &> /dev/null; then
         sudo persist-config --shutdown --command poweroff
@@ -36,7 +36,7 @@ h|--help)
     fi
     ;;
 -S|--suspend)
-    dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+    sudo pm-suspend
     ;;
 -r|--reboot)
     if [ -e /etc/live/config/save-persist -o -e /live/config/persist-save.conf ] && which persist-config &> /dev/null; then
