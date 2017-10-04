@@ -14,6 +14,9 @@ fbxkb-start &
 # Uncomment the following line to mount Samba and/or NFS shares
 #connectshares &
 
+# Uncomment to show the configuration gui of a running ssh-conduit-x11vnc server
+#ssh-conduit-x11vnc.sh gui &
+
 # Uncomment to use clipboard manager
 #clipit &
 

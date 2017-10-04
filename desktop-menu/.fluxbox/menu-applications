@@ -29,12 +29,9 @@
 [exec] (Simple Scan) {simple-scan} </usr/share/icons/Faenza-Cupertino-mini/devices/32/scanner.png>
 [end]
 [submenu] (Internet) </usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-internet.png>  
+[exec] (Ceni) {desktop-defaults-run -t sudo ceni} </usr/share/icons/hicolor/32x32/apps/ceni.png>
 [exec] (Claws Mail) {claws-mail } </usr/share/icons/Faenza-Cupertino-mini/apps/32/claws-mail.png>
-[exec] (Connectshares) {connectshares} </usr/share/pixmaps/connectshares.png>
-[exec] (Connectshares Configuration) {connectshares-config} </usr/share/pixmaps/connectshares-config.png>
 [exec] (Dillo) {dillo } </usr/share/pixmaps/dillo.png>
-[exec] (Disconnectshares) {disconnectshares} </usr/share/pixmaps/disconnectshares.png>
-[exec] (Droopy) {droopy.sh} </usr/share/pixmaps/droopy.png>
 [exec] (Firefox ESR) {/usr/lib/firefox-esr/firefox-esr } </usr/share/icons/hicolor/32x32/apps/firefox-esr.png>
 [exec] (gFTP) {gftp-gtk } </usr/share/pixmaps/gftp.png>
 [exec] (HexChat) {hexchat --existing } </usr/share/icons/Faenza-Cupertino-mini/apps/48/hexchat.png>
@@ -59,6 +56,7 @@
 [exec] (Asunder CD Ripper) {asunder } </usr/share/icons/asunder.png>
 [exec] (GNOME MPV) {gnome-mpv } </usr/share/icons/hicolor/scalable/apps/gnome-mpv.svg>
 [exec] (guvcview) {guvcview} </usr/share/pixmaps/guvcview/guvcview.png>
+[exec] (mps-youtube) {desktop-defaults-run -t mpsyt } </usr/share/icons/Faenza-Cupertino-mini/apps/32/terminal.png>
 [exec] (mpv Media Player) {mpv --player-operation-mode=pseudo-gui -- } </usr/share/icons/hicolor/32x32/apps/mpv.png>
 [exec] (SMTube) {smtube} </usr/share/icons/hicolor/32x32/apps/smtube.png>
 [exec] (Streamlight) {streamlight-gui-launcher.sh} </usr/share/pixmaps/streamlight-gui-launcher.png>
@@ -67,19 +65,28 @@
 [exec] (xmms) {xmms} </usr/share/icons/xmms.png>
 [end]
 [submenu] (System Tools) </usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png>  
+[exec] (dd-live-usb) {su-to-root -X -c "live-usb-maker-gui --dd"} </usr/share/icons/Faenza-Cupertino-mini/devices/32/drive-removable-media-usb.png>
+[exec] (GParted) {gksu gparted} </usr/share/icons/Faenza-Cupertino-mini/apps/32/gparted.png>
+[exec] (GSmartControl) {su-to-root -X -c gsmartcontrol} </usr/share/icons/hicolor/32x32/apps/gsmartcontrol.png>
 [exec] (Htop) {desktop-defaults-run -t htop} </usr/share/icons/Faenza-Cupertino-mini/apps/32/htop.png>
 [exec] (IceWMcc) {/usr/local/bin/icewmcc/icewmcc.sh} </usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png>
 [exec] (iso-snapshot) {gksu isosnapshot} </usr/share/pixmaps/iso-snapshot.png>
+[exec] (Live-usb kernel updater) {desktop-defaults-run -t sudo /usr/local/bin/live-kernel-updater --pause} </usr/share/icons/Faenza-Cupertino-mini/devices/32/drive-removable-media-usb.png>
+[exec] (Live-usb maker) {su-to-root -X -c live-usb-maker-gui} </usr/share/icons/Faenza-Cupertino-mini/devices/32/drive-removable-media-usb.png>
 [exec] (LXTerminal) {lxterminal} </usr/share/icons/Faenza-Cupertino-mini/apps/32/lxterminal.png>
 [exec] (Midnight Commander) {desktop-defaults-run -t mc} </usr/share/icons/hicolor/64x64/apps/MidnightCommander.png>
+[exec] (Package Installer) {su-to-root -X -c packageinstaller} </usr/share/pixmaps/packageinstaller.png>
 [exec] (Root Terminal) {gksu /usr/bin/x-terminal-emulator} </usr/share/icons/Faenza-Cupertino-mini/apps/32/gksu-root-terminal.png>
 [exec] (ROX Filer) {rox-filer} </usr/share/icons/antiX/rox-filer.png>
 [exec] (Rxvt Color Unicode Terminal) {urxvt} </usr/share/pixmaps/urxvt_48x48.xpm>
 [exec] (SpaceFM) {spacefm } </usr/share/icons/Faenza-Cupertino-mini/apps/48/spacefm.png>
+[exec] (Synaptic Package Manager) {gksu synaptic} </usr/share/icons/Faenza-Cupertino-mini/apps/32/synaptic.png>
 [end]
 [separator]
 [submenu] (Preferences) </usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png>  
 [exec] (Add Menu Item) {add-desktop} </usr/share/icons/Faenza-Cupertino-mini/categories/32/gnome-control-center.png>
+[exec] (Adobe Flash Player) {flash-player-properties} </usr/share/icons/Faenza-Cupertino-mini/apps/32/flash-player-properties.png>
+[exec] (Command line apt-based package manager) {desktop-defaults-run -t sudo /usr/local/bin/cli-aptiX --pause} </usr/share/icons/Faenza-Cupertino-mini/apps/32/system-software-install.png>
 [exec] (Customize Look and Feel) {lxappearance} </usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png>
 [exec] (Menu Manager) {sudo menu_manager.sh} </usr/share/pixmaps/menu_manager.png>
 [exec] (Qt5 Settings) {qt5ct} </usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png>
