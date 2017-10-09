@@ -1,3 +1,9 @@
+desktop-session-antix (0.3.13) unstable; urgency=medium
+
+  * Fix other desktops desktop file
+
+ -- anticapitalista <antix@operamail.com>  Mon, 09 Oct 2017 18:19:39 +0300
+
 desktop-session-antix (0.3.12) unstable; urgency=medium
 
   * new upstream
