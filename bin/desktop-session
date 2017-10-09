@@ -50,6 +50,13 @@ launch_wm() {
         min-*)   wm=${code#min-};   im=min;;           
         *)       wm=$code;          im=none;;
     esac
+    
+    say "$wm"
+    case ,$menu_wms, in 
+        ,,) display_altdesktop_window="false"; say "display_alt_desktop_window=false";;
+        *,$wm,*) display_altdesktop_window="false"; say "display_alt_desktop_window=false";;
+        *)  display_altdesktop_window="true"; say "display_alt_desktop_window=true";;
+    esac
 
     # Make sure wm is in list of valid WMs for the icon manager.
     # An empty $valid_wm will match the first clause.  A valid wm
@@ -62,7 +69,8 @@ launch_wm() {
         *)       
             warn "Window manager $wm is not compatiable with $im icons"
             warn "Disabling icon manager"
-            im=none ;;
+            im=none 
+            ;;
     esac
 
     get_wm_exec "$wm" || fatal "No executable found for $wm"
@@ -100,6 +108,12 @@ launch_wm() {
         . $config
     done
     
+    if [ "$STARTUP_SOUND" = 'true' ]; then
+        if [ -f "$STARTUP_SOUND_FILE" ]; then
+            play "$STARTUP_SOUND_FILE" &
+        fi
+    fi
+    
     if [ "$NOTIFICATION_DIALOG" = 'true' ]; then
         #Determine startup notification text, either  via program return or text.
         #CLEAN_NOTIFICATION_TEXT=$(echo $NOTIFICATION_TEXT |sed "s/\"//ig"|sed "s/'//ig" )
@@ -132,7 +146,7 @@ launch_wm() {
 #ADDED BY DAVE
 ####FROM START####
 min_check() {
-	if [ "$im" != "min" ]; then
+    if [ "$im" != "min" ]; then
         if [ -f "~/.$wm/startup.disabled" ]; then
             mv ~/.$wm/startup.disabled ~/.$wm/startup
         fi
@@ -142,9 +156,13 @@ min_check() {
     fi
 }
 startup_dialog() {
-	if [ ! -f "$user_dts_dir/finished-login-run" ] && [ "$STARTUP_DIALOG" = "true" ]; then
-	    touch "$user_dts_dir/finished-login-run"
-	    eval "$STARTUP_DIALOG_CMD" & startup_dialog_pid=$!;
+    if [ "$display_altdesktop_window" = "true" ]; then
+        echo_bg_cmd $desktop_session_menu_window;
+    fi
+        
+    if [ ! -f "$user_dts_dir/finished-login-run" ] && [ "$STARTUP_DIALOG" = "true" ]; then
+        touch "$user_dts_dir/finished-login-run"
+        eval "$STARTUP_DIALOG_CMD" & startup_dialog_pid=$!;
     fi
 }
 close_startup_notification() {
@@ -210,7 +228,7 @@ launch_desktop() {
         
         #Set wallpaper
         sleep $STARTUP_DELAY;
-        echo_cmd desktop-session-wallpaper;
+        echo_cmd desktop-session-wallpaper &
 
         #Build Applications menu here rather than startup file?PB
         #echo_cmd desktop-menu --write-out-global;
@@ -274,8 +292,8 @@ launch_desktop() {
             if [ -f "$user_startup_file" ]; then
                 echo_bg_cmd $user_startup_file;
             else
-	        echo_bg_cmd $main_startup_file;
-	    fi
+            echo_bg_cmd $main_startup_file;
+        fi
         fi
         
         #Check if the user would like to run the session specific conky or not.

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Exit Desktop Session
+Icon=application-exit
+Categories=System;
+Exec=desktop-session-exit
+Terminal=false
+NoDisplay=False

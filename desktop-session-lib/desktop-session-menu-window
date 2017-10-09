@@ -1,0 +1,38 @@
+#!/bin/bash
+
+TEXT="Your window manager was not one of the supported window managers. This window is to provide the same function as the Other Desktops menu"
+BYPASS=0
+
+if ! grep "bypass" <<< "$@" &&  [ $BYPASS = 1 ] ; then 
+    exit; 
+else
+    if [ $BYPASS = 0 ] ; then
+        BUTTON="--button=Hide:3"
+    else
+        BUTTON="--button=Unhide:3"
+    fi
+fi
+
+OLDIFS="$IFS"
+IFS="|"
+while :
+do 
+    SWITCH_WM_EXEC=$(yad --width=300 --height=400 --title="Other Desktops" --text="$TEXT" --image-on-top --image="info" --list --radiolist --column="" --column="Session Name" --column="Session Exec:HD" `cat /usr/share/desktop-session/wm-menus/RAW-wm-menu` --print-column=3 $BUTTON --button="Control Center:2" --button="gtk-cancel:1" --button="gtk-ok:0")
+    case $? in
+        0)  #echo "$SWITCH_WM_EXEC" # For testing without switching
+            eval $SWITCH_WM_EXEC # Make the switch
+            break
+        ;;
+        1)  break  ;;
+        2)  antixcc.sh & ;;
+        3)  if [ $BYPASS = 0 ] ; then
+                sed -i "s/^BYPASS=.*/BYPASS=1/g" $0
+            else
+                sed -i "s/^BYPASS=.*/BYPASS=0/g" $0
+            fi  
+            break ;;
+        *)  echo "Not sure what to do with value $?" ;
+            break ;;
+    esac
+done
+IFS="$OLDIFS"

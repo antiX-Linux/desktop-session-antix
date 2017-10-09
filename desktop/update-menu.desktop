@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Update Menu
+Icon=update-manager
+Categories=System;
+Exec=desktop-menu --write-out-global
+Terminal=false
+NoDisplay=False

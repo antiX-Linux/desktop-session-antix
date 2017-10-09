@@ -12,6 +12,7 @@ space_enabled=fluxbox,icewm,jwm,openbox
 rox_manager='rox --pinboard=antiX-${code##rox-}'
 space_manager='spacefm --desktop &'
 non_autostart=fluxbox,icewm,jwm
+menu_wms=fluxbox,icewm,jwm
 fallback_desktop="rox-fluxbox"
 fallback_wmx="/usr/bin/icewm-session /usr/bin/startfluxbox"
 signal_files="$gpid_file $ppid_file $restart_file $desktop_file"
@@ -57,8 +58,8 @@ shout() { echo "$ME: $*" | tee -a $log_file ; }
 psay()  { say "$(plural "$@")"              ; }
 
 echo_variable() {
-	echo "$ME: Setting environment variable: $*"
-	export "$@"
+    echo "$ME: Setting environment variable: $*"
+    export "$@"
 }
 
 echo_cmd() {

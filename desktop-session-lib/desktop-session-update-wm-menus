@@ -18,7 +18,7 @@ SET_DEF_PROG="desktop-session-set-default"
 
    ICON_LIST="Cycle-IM Rox SpaceFM None-IM"
        ISTEP=2
-         WMs="fluxbox icewm jwm"
+         WMs="fluxbox icewm jwm RAW"
 
    icon_managers="Rox Space min"
      min_enabled=fluxbox,icewm,jwm
@@ -127,6 +127,11 @@ write_menu() {
         start_file="<JWM>"
         end_file="</JWM>"
         ;;
+    RAW)
+        start_menu=""
+        end_menu=""
+        entry_text=" |%s|%%s|"
+        ;;
 
     *)  error "Unknown window manager: $wm"
         ;;
@@ -201,7 +206,6 @@ raw_wm_list() {
         | sed -r -e 's/^Name=//' -e 's/ (desktop|session)$//i' -e 's/ +/_/g' \
         | grep -v "IceWM" \
         | sort -f  
-        
 }
 
 check_user() {
