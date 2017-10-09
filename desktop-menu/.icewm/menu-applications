@@ -135,6 +135,7 @@ prog "Backlight Brightness" video-display-symbolic.symbolic desktop-defaults-run
 prog "Command line control centre" /usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png desktop-defaults-run -t antiX-cli-cc
 prog "Configure automount" /usr/share/pixmaps/mountbox.png automount-config
 prog "Customize Look and Feel" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png lxappearance
+prog "Firewall Configuration" /usr/share/icons/hicolor/48x48/apps/gufw.png gufw
 prog "Group Management" /usr/share/icons/Faenza-Cupertino-mini/apps/32/config-users.png gksu group-management
 prog "Installer" /usr/share/icons/msystem.png sudo antixsources.sh
 prog "Menu Manager" /usr/share/pixmaps/menu_manager.png sudo menu_manager.sh

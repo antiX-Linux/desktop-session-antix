@@ -135,6 +135,7 @@
 [exec] (Command line control centre) {desktop-defaults-run -t antiX-cli-cc} </usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png>
 [exec] (Configure automount) {automount-config} </usr/share/pixmaps/mountbox.png>
 [exec] (Customize Look and Feel) {lxappearance} </usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png>
+[exec] (Firewall Configuration) {gufw} </usr/share/icons/hicolor/48x48/apps/gufw.png>
 [exec] (Group Management) {gksu group-management} </usr/share/icons/Faenza-Cupertino-mini/apps/32/config-users.png>
 [exec] (Installer) {sudo antixsources.sh} </usr/share/icons/msystem.png>
 [exec] (Menu Manager) {sudo menu_manager.sh} </usr/share/pixmaps/menu_manager.png>
