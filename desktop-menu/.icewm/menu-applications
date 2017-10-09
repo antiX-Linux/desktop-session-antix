@@ -81,7 +81,6 @@ prog "Speaker Test" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-d
 prog "Streamlight" /usr/share/pixmaps/streamlight-gui-launcher.png streamlight-gui-launcher.sh
 prog "streamtuner2" /usr/share/pixmaps/streamtuner2.png streamtuner2
 prog "WinFF" /usr/share/icons/hicolor/32x32/apps/winff.png winff 
-prog "Xfburn" /usr/share/icons/Faenza-Cupertino-mini/devices/32/media-cdrom.png xfburn
 prog "xmms" /usr/share/icons/xmms.png xmms
 }
 menu "System Tools" /usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png { 

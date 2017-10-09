@@ -81,7 +81,6 @@
 <Program label="Streamlight" icon="/usr/share/pixmaps/streamlight-gui-launcher.png">streamlight-gui-launcher.sh</Program>
 <Program label="streamtuner2" icon="/usr/share/pixmaps/streamtuner2.png">streamtuner2</Program>
 <Program label="WinFF" icon="/usr/share/icons/hicolor/32x32/apps/winff.png">winff </Program>
-<Program label="Xfburn" icon="/usr/share/icons/Faenza-Cupertino-mini/devices/32/media-cdrom.png">xfburn</Program>
 <Program label="xmms" icon="/usr/share/icons/xmms.png">xmms</Program>
 </Menu>
 <Menu label="System Tools" icon="/usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png" >

@@ -81,7 +81,6 @@
 [exec] (Streamlight) {streamlight-gui-launcher.sh} </usr/share/pixmaps/streamlight-gui-launcher.png>
 [exec] (streamtuner2) {streamtuner2} </usr/share/pixmaps/streamtuner2.png>
 [exec] (WinFF) {winff } </usr/share/icons/hicolor/32x32/apps/winff.png>
-[exec] (Xfburn) {xfburn} </usr/share/icons/Faenza-Cupertino-mini/devices/32/media-cdrom.png>
 [exec] (xmms) {xmms} </usr/share/icons/xmms.png>
 [end]
 [submenu] (System Tools) </usr/share/icons/Faenza-Cupertino-mini/categories/32/applications-system.png>  
