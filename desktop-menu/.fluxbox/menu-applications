@@ -130,7 +130,7 @@
 [exec] (Advert Block) {gksu block-advert.sh} </usr/share/pixmaps/advert-block.png>
 [exec] (Alternatives Configurator) {/usr/sbin/galternatives} </usr/share/pixmaps/galternatives.png>
 [exec] (ARandR) {arandr} </usr/share/icons/Faenza-Cupertino-mini/devices/32/display.png>
-[exec] (Backlight Brightness) {desktop-defaults-run -t backlight-brightness} <video-display-symbolic.symbolic>
+[exec] (Backlight Brightness) {desktop-defaults-run -t backlight-brightness} </usr/share/icons/Faenza-Cupertino-mini/devices/32/video-display.png>
 [exec] (Command line control centre) {desktop-defaults-run -t antiX-cli-cc} </usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png>
 [exec] (Configure automount) {automount-config} </usr/share/pixmaps/mountbox.png>
 [exec] (Customize Look and Feel) {lxappearance} </usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png>

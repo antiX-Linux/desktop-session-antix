@@ -130,7 +130,7 @@ prog "ADSL/PPPOE configuration" /usr/share/pixmaps/pppoeconf.xpm desktop-default
 prog "Advert Block" /usr/share/pixmaps/advert-block.png gksu block-advert.sh
 prog "Alternatives Configurator" /usr/share/pixmaps/galternatives.png /usr/sbin/galternatives
 prog "ARandR" /usr/share/icons/Faenza-Cupertino-mini/devices/32/display.png arandr
-prog "Backlight Brightness" video-display-symbolic.symbolic desktop-defaults-run -t backlight-brightness
+prog "Backlight Brightness" /usr/share/icons/Faenza-Cupertino-mini/devices/32/video-display.png desktop-defaults-run -t backlight-brightness
 prog "Command line control centre" /usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png desktop-defaults-run -t antiX-cli-cc
 prog "Configure automount" /usr/share/pixmaps/mountbox.png automount-config
 prog "Customize Look and Feel" /usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png lxappearance

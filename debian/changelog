@@ -1,3 +1,11 @@
+desktop-session-antix (0.4.0) unstable; urgency=medium
+
+  * Fix wrong desktop image path for brightness app
+  * Updated speedtest-cli - thanks skidoo
+  * bump version
+  
+ -- anticapitalista <antix@operamail.com>  Wed, 11 Oct 2017 18:20:00 +0300
+
 desktop-session-antix (0.3.13) unstable; urgency=medium
 
   * Fix other desktops desktop file

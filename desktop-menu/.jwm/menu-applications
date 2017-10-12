@@ -130,7 +130,7 @@
 <Program label="Advert Block" icon="/usr/share/pixmaps/advert-block.png">gksu block-advert.sh</Program>
 <Program label="Alternatives Configurator" icon="/usr/share/pixmaps/galternatives.png">/usr/sbin/galternatives</Program>
 <Program label="ARandR" icon="/usr/share/icons/Faenza-Cupertino-mini/devices/32/display.png">arandr</Program>
-<Program label="Backlight Brightness" icon="video-display-symbolic.symbolic">desktop-defaults-run -t backlight-brightness</Program>
+<Program label="Backlight Brightness" icon="/usr/share/icons/Faenza-Cupertino-mini/devices/32/video-display.png">desktop-defaults-run -t backlight-brightness</Program>
 <Program label="Command line control centre" icon="/usr/share/icons/Faenza-Cupertino-mini/categories/32/preferences-desktop.png">desktop-defaults-run -t antiX-cli-cc</Program>
 <Program label="Configure automount" icon="/usr/share/pixmaps/mountbox.png">automount-config</Program>
 <Program label="Customize Look and Feel" icon="/usr/share/icons/Faenza-Cupertino-mini/apps/32/preferences-desktop-theme.png">lxappearance</Program>
