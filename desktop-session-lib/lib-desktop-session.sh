@@ -1,7 +1,7 @@
 
 ME=${0##*/}
 
-PATH=.:$PATH
+#PATH=.:$PATH
 
 . /usr/local/lib/desktop-session/lib-popup-window.sh
 . /usr/local/lib/desktop-session/desktop-session-file-locations.sh

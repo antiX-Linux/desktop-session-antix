@@ -22,6 +22,7 @@ fbxkb-start &
 
 # Uncomment to show wicd networking monitor
 #wicd-client -t &
+grep -q "START_DAEMON=no" /etc/default/wicd || wicd-client -t &
 
 # Create a bootchart image if bootchart was run
 test -e /etc/live/config/bootchart \

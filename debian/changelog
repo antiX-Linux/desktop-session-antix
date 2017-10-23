@@ -1,3 +1,9 @@
+desktop-session-antix (0.4.1) unstable; urgency=medium
+
+  * Added various desktop files
+
+ -- anticapitalista <antix@operamail.com>  Sat, 21 Oct 2017 13:08:57 +0300
+
 desktop-session-antix (0.4.0) unstable; urgency=medium
 
   * Fix wrong desktop image path for brightness app
