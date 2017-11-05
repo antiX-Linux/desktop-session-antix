@@ -4,6 +4,6 @@ Type=Application
 Name=Other Desktops
 Icon=/usr/share/icons/antiX/cs-desktop-effects.png
 Categories=Utility;
-Exec=/usr/local/lib/desktop-session/desktop-session-menu-window bypass
+Exec=/usr/local/lib/desktop-session/desktop-session-menu-window ignore-settings
 Terminal=false
 NoDisplay=False

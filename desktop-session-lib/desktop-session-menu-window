@@ -1,23 +1,26 @@
 #!/bin/bash
 
 TEXT="Your window manager was not one of the supported window managers. This window is to provide the same function as the Other Desktops menu"
-BYPASS=0
+CONF_DIR="$HOME/.desktop-session"
+CONF_FILE="$CONF_DIR/desktop-session.conf"
+GLOBAL_CONF_FILE="/etc/desktop-session/desktop-session.conf"
 
-if ! grep "bypass" <<< "$@" &&  [ $BYPASS = 1 ] ; then 
-    exit; 
-else
-    if [ $BYPASS = 0 ] ; then
-        BUTTON="--button=Hide:3"
-    else
-        BUTTON="--button=Unhide:3"
-    fi
+if [ ! -f $CONF_FILE ]; then
+    mkdir -p $CONF_DIR;
+    cp $GLOBAL_CONF_FILE $CONF_FILE
 fi
+. $CONF_FILE
+
+if [ "$OTHER_DESKTOPS_WINDOW" != 'true' ] && [ "$1" != "ignore-settings" ]; then
+    exit
+fi
+
 
 OLDIFS="$IFS"
 IFS="|"
 while :
 do 
-    SWITCH_WM_EXEC=$(yad --width=300 --height=400 --title="Other Desktops" --text="$TEXT" --image-on-top --image="info" --list --radiolist --column="" --column="Session Name" --column="Session Exec:HD" `cat /usr/share/desktop-session/wm-menus/RAW-wm-menu` --print-column=3 $BUTTON --button="Control Center:2" --button="gtk-cancel:1" --button="gtk-ok:0")
+    SWITCH_WM_EXEC=$(yad --width=300 --height=400 --title="Other Desktops" --text="$TEXT" --image-on-top --image="info" --list --radiolist --column="" --column="Session Name" --column="Session Exec:HD" `cat /usr/share/desktop-session/wm-menus/RAW-wm-menu` --print-column=3 $BUTTON --button="Disable Window:3" --button="Control Center:2" --button="gtk-cancel:1" --button="gtk-ok:0")
     case $? in
         0)  #echo "$SWITCH_WM_EXEC" # For testing without switching
             eval $SWITCH_WM_EXEC # Make the switch
@@ -25,11 +28,7 @@ do
         ;;
         1)  break  ;;
         2)  antixcc.sh & ;;
-        3)  if [ $BYPASS = 0 ] ; then
-                sed -i "s/^BYPASS=.*/BYPASS=1/g" $0
-            else
-                sed -i "s/^BYPASS=.*/BYPASS=0/g" $0
-            fi  
+        3)  sed -ir "s/^OTHER_DESKTOPS_WINDOW=\".*\"/OTHER_DESKTOPS_WINDOW=\"false\"/" $CONF_FILE;  
             break ;;
         *)  echo "Not sure what to do with value $?" ;
             break ;;
