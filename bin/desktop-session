@@ -93,7 +93,7 @@ launch_wm() {
     
     #Run xmodmap changes if existing
     if [ -f "$xmodmap_config" ]; then
-        xmodmap "$xmodmap_config"
+        echo_cmd xmodmap "$xmodmap_config"
     fi
     
     #Check sys configuration and load user overrides
@@ -109,9 +109,9 @@ launch_wm() {
     done
     
     if [ "$STARTUP_SOUND" = 'true' ]; then
-        amixer sset 'Master' -M $STARTUP_SOUND_LEVEL
+        echo_cmd amixer sset 'Master' -M $STARTUP_SOUND_LEVEL
         if [ -f "$STARTUP_SOUND_FILE" ]; then
-            play "$STARTUP_SOUND_FILE" &
+            echo_cmd play "$STARTUP_SOUND_FILE" &
         fi
     fi
     
@@ -149,20 +149,22 @@ launch_wm() {
 min_check() {
     if [ "$im" != "min" ]; then
         if [ -f "~/.$wm/startup.disabled" ]; then
-            mv ~/.$wm/startup.disabled ~/.$wm/startup
+            echo_cmd mv ~/.$wm/startup.disabled ~/.$wm/startup
         fi
         launch_desktop & launch_desktop_pid=$! ;
     else
-        mv ~/.$wm/startup ~/.$wm/startup.disabled
+        if [ -f "~/.$wm/startup" ]; then
+            echo_cmd mv ~/.$wm/startup ~/.$wm/startup.disabled
+        fi
     fi
 }
 startup_dialog() {
-    if [ "$display_altdesktop_window" = "true" ]; then
+    if [ "$display_altdesktop_window" = "true" -a "$OTHER_DESKTOPS_WINDOW" = "true" ]; then
         echo_bg_cmd $desktop_session_menu_window;
     fi
         
     if [ ! -f "$user_dts_dir/finished-login-run" ] && [ "$STARTUP_DIALOG" = "true" ]; then
-        touch "$user_dts_dir/finished-login-run"
+        echo_cmd touch "$user_dts_dir/finished-login-run"
         eval "$STARTUP_DIALOG_CMD" & startup_dialog_pid=$!;
     fi
 }
