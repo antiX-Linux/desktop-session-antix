@@ -308,7 +308,17 @@ launch_desktop() {
         fi
         
         #Finally Set the screen blank time / screen saver
-        echo_cmd xset dpms $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME s $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME;
+        if [ "$SCREEN_BLANK_TIME" = "0" ]; then
+            echo_cmd xset -dpms; 
+            echo_cmd xset s off; 
+            echo_cmd xset s noexpose;
+            echo_cmd xset dpms $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME s $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME;
+        else
+            echo_cmd xset +dpms; 
+            echo_cmd xset s on; 
+            echo_cmd xset s expose; 
+            echo_cmd xset dpms $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME s $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME;
+        fi
         
     else 
         shout "Window Manager not found to be running after $TIMES_TO_CHECK checks";
