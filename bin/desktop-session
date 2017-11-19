@@ -109,6 +109,7 @@ launch_wm() {
     done
     
     if [ "$STARTUP_SOUND" = 'true' ]; then
+        amixer sset 'Master' -M $STARTUP_SOUND_LEVEL
         if [ -f "$STARTUP_SOUND_FILE" ]; then
             play "$STARTUP_SOUND_FILE" &
         fi
