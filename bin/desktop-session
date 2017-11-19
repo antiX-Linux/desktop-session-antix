@@ -97,6 +97,7 @@ launch_wm() {
     fi
     
     #Check sys configuration and load user overrides
+    echo_cmd $desktop_session_config_check;
     for config in $main_config $user_config; do
         test -r $config || continue
         if ! /bin/bash -n $config; then
