@@ -1,3 +1,9 @@
+desktop-session-antix (0.4.3) unstable; urgency=medium
+
+  * Changed file manager icons
+
+ -- anticapitalista <antix@operamail.com>  Sun, 21 Jan 2018 17:53:04 +0200
+
 desktop-session-antix (0.4.2) unstable; urgency=medium
 
   * Fixed annoying pop up
