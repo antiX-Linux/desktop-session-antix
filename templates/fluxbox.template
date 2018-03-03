@@ -3,6 +3,7 @@
 #Take care to maintain a space before and after the "="
 #File_Start = 
 #File_End = 
+#Menu_ID = 0 / 1  (set 1 if a unique menu id is required)
 #Menu_Start = [submenu] (Name) <Icon>  
 #Menu_End = [end]
 #Menu_Program = menuprog "%s" "%s" %s
@@ -11,6 +12,7 @@
 
 File_Start = 
 File_End = 
+Menu_ID = 0
 Menu_Start = [submenu] (%s) <%s>  
 Menu_End = [end]
 Menu_Program = menuprog "%s" "%s" %s

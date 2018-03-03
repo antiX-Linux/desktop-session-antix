@@ -85,9 +85,6 @@ def print_version():
   sys.exit(0)
   
 def write_to_file(STRING):
-    if not os.path.exists(USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File):
-      os.system("mkdir -p %s; rm -r %s" % (USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File),(USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File))
-      
     text = file((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File), "a")
     text.write (STRING+"\n")
     text.close()
@@ -148,9 +145,15 @@ def process_menu(menu):
         else:
           SUB_ORDER('menu',name,icon,'')
         if write_out:
-          write_to_file((Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1)).encode(encoding))
+          if Var.Menu_ID == '1':
+            write_to_file((Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding))
+          else:
+            write_to_file((Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1)).encode(encoding))
         else:
-          print (Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1)).encode(encoding)
+          if Var.Menu_ID == '1':
+            print (Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding)
+          else:
+            print (Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1)).encode(encoding)
         process_menu(entry)
         if write_out:
           write_to_file(Var.Menu_End.encode(encoding))
@@ -264,7 +267,11 @@ def build_menu():
     if write_out_file:
         Var.App_File = write_out_file
   
-    open((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File), 'w').close()  
+    if not os.path.isdir(USER_HOME+"/"+Var.Conf_Dir+"/"):
+        os.system("mkdir -p %s" % (USER_HOME+"/"+Var.Conf_Dir+"/"))
+        os.system("touch %s" % (USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File))
+    else:
+        open((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File), 'w').close()  
 
     menu = xdg.Menu.parse(menu_file)
     if root_folder: menu = menu.getMenu(root_folder)

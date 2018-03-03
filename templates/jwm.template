@@ -3,6 +3,7 @@
 #Take care to maintain a space before and after the "="
 #File_Start = <JWM>
 #File_End = </JWM>
+#Menu_ID = 0/1 (set 1 if a unique menu id is required)
 #Menu_Start = <Menu label="Title" icon="Icon" >
 #Menu_End = </Menu>
 #Menu_Program = menuprog "%s" "%s" %s
@@ -11,6 +12,7 @@
 
 File_Start = <JWM>
 File_End = </JWM>
+Menu_ID = 0
 Menu_Start = <Menu label="%s" icon="%s" >
 Menu_End = </Menu>
 Menu_Program = menuprog "%s" "%s" %s

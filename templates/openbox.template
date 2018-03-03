@@ -1,0 +1,29 @@
+#Template to build Openbox menu
+#This template should reflect the xml syntax for the Openbox menu
+#Take care to maintain a space before and after the "="
+
+File_Start = <?xml version="1.0" encoding="UTF-8"?><openbox_menu><menu id='antiX-Applications' label='antiX-Applications' >
+File_End = </menu></openbox_menu>
+Menu_ID = 1
+Menu_Start = <menu id='menuId-%s' label='%s' icon='%s'>
+Menu_End = </menu>
+Program = <item label='%s' icon='%s'><action name='Execute'><execute>%s</execute></action></item>
+Separator = <separator />
+
+#The Following Lines are to change the order of substitution of the %s place holders
+#There are 3 Options. name, icon, execute.
+#These can be aranged and any order to match the wm's abilities.
+#They *must* remain comma separated 
+
+Program_Sub_Order = name, icon, execute
+Menu_Sub_Order = name, name, icon
+
+#The following line is for determining the application menus filename. 
+App_File = menu-applications.xml
+
+#User Config Dir
+Conf_Dir = .config/openbox
+
+#Restart Command
+#Enter a command to restart if needed, leave blank if not.
+Restart_Command = 
