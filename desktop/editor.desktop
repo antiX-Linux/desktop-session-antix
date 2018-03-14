@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=Text Editor
+Name[am]=ጽሁፍ ማረሚያ
 Name[bg]=текстов редактор
 Name[ca]=Editor de text
 Name[cs]=Textový editor

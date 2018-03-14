@@ -2,6 +2,8 @@
 Encoding=UTF-8
 Type=Application
 Name=Other Desktops
+Name[am]=ሌላ ዴስክቶፕ
+Name[el]=Άλλες Επιφάνειες εργασίας 
 Icon=/usr/share/icons/antiX/cs-desktop-effects.png
 Categories=Utility;
 Exec=/usr/local/lib/desktop-session/desktop-session-menu-window ignore-settings

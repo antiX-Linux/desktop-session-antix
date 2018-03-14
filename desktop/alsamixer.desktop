@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=Alsamixer
+Name[am]=Alsamixer 
+Name[el]=Alsamixer
 Comment=ALSA Audio
+Comment[am]=ALSA ድምፅ
+Comment[el]=ALSA Audio
 Exec=x-terminal-emulator -e alsamixer
 Icon=alsamixer-equalizer.png
 Terminal=false

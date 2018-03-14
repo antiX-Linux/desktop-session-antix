@@ -93,11 +93,10 @@ launch_wm() {
     
     #Run xmodmap changes if existing
     if [ -f "$xmodmap_config" ]; then
-        echo_cmd xmodmap "$xmodmap_config"
+        xmodmap "$xmodmap_config"
     fi
     
     #Check sys configuration and load user overrides
-    echo_cmd $desktop_session_config_check;
     for config in $main_config $user_config; do
         test -r $config || continue
         if ! /bin/bash -n $config; then
@@ -110,9 +109,8 @@ launch_wm() {
     done
     
     if [ "$STARTUP_SOUND" = 'true' ]; then
-        echo_cmd amixer sset 'Master' -M $STARTUP_SOUND_LEVEL
         if [ -f "$STARTUP_SOUND_FILE" ]; then
-            echo_cmd play "$STARTUP_SOUND_FILE" &
+            play "$STARTUP_SOUND_FILE" &
         fi
     fi
     
@@ -150,22 +148,20 @@ launch_wm() {
 min_check() {
     if [ "$im" != "min" ]; then
         if [ -f "~/.$wm/startup.disabled" ]; then
-            echo_cmd mv ~/.$wm/startup.disabled ~/.$wm/startup
+            mv ~/.$wm/startup.disabled ~/.$wm/startup
         fi
         launch_desktop & launch_desktop_pid=$! ;
     else
-        if [ -f "~/.$wm/startup" ]; then
-            echo_cmd mv ~/.$wm/startup ~/.$wm/startup.disabled
-        fi
+        mv ~/.$wm/startup ~/.$wm/startup.disabled
     fi
 }
 startup_dialog() {
-    if [ "$display_altdesktop_window" = "true" -a "$OTHER_DESKTOPS_WINDOW" = "true" ]; then
+    if [ "$display_altdesktop_window" = "true" ]; then
         echo_bg_cmd $desktop_session_menu_window;
     fi
         
     if [ ! -f "$user_dts_dir/finished-login-run" ] && [ "$STARTUP_DIALOG" = "true" ]; then
-        echo_cmd touch "$user_dts_dir/finished-login-run"
+        touch "$user_dts_dir/finished-login-run"
         eval "$STARTUP_DIALOG_CMD" & startup_dialog_pid=$!;
     fi
 }
@@ -311,17 +307,7 @@ launch_desktop() {
         fi
         
         #Finally Set the screen blank time / screen saver
-        if [ "$SCREEN_BLANK_TIME" = "0" ]; then
-            echo_cmd xset -dpms; 
-            echo_cmd xset s off; 
-            echo_cmd xset s noexpose;
-            echo_cmd xset dpms $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME s $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME;
-        else
-            echo_cmd xset +dpms; 
-            echo_cmd xset s on; 
-            echo_cmd xset s expose; 
-            echo_cmd xset dpms $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME s $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME;
-        fi
+        echo_cmd xset dpms $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME s $SCREEN_BLANK_TIME $SCREEN_BLANK_TIME;
         
     else 
         shout "Window Manager not found to be running after $TIMES_TO_CHECK checks";

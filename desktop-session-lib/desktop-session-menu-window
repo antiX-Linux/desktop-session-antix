@@ -3,6 +3,18 @@
 TEXT="Your window manager was not one of the supported window managers. This window is to provide the same function as the Other Desktops menu"
 CONF_DIR="$HOME/.desktop-session"
 CONF_FILE="$CONF_DIR/desktop-session.conf"
+GLOBAL_CONF_FILE="/etc/desktop-session/desktop-session.conf"
+
+if [ ! -f $CONF_FILE ]; then
+    mkdir -p $CONF_DIR;
+    cp $GLOBAL_CONF_FILE $CONF_FILE
+fi
+. $CONF_FILE
+
+if [ "$OTHER_DESKTOPS_WINDOW" != 'true' ] && [ "$1" != "ignore-settings" ]; then
+    exit
+fi
+
 
 OLDIFS="$IFS"
 IFS="|"

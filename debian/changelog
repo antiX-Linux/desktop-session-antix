@@ -1,3 +1,22 @@
+desktop-session-antix (0.4.6) unstable; urgency=medium
+
+  * added left-hand mouse option in startup file
+  * dave's openbox template added
+
+ -- anticapitalista <antix@operamail.com>  Wed, 14 Mar 2018 20:34:34 +0200
+
+desktop-session-antix (0.4.5) unstable; urgency=medium
+
+  * renamed et local to ee
+
+ -- anticapitalista <antix@operamail.com>  Fri, 02 Mar 2018 19:57:44 +0200
+
+desktop-session-antix (0.4.4) unstable; urgency=medium
+
+  * bumped icon size in menus to 48 from 32
+
+ -- anticapitalista <antix@operamail.com>  Tue, 20 Feb 2018 20:01:21 +0200
+
 desktop-session-antix (0.4.3) unstable; urgency=medium
 
   * Changed file manager icons

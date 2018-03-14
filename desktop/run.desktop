@@ -2,6 +2,11 @@
 Encoding=UTF-8
 Type=Application
 Name=Run
+Name[am]=ማስኬጃ
+Name[el]=Εκτέλεση
+Comment=Run Application
+Comment[am]=መተግበሪያ ማስኬጃ
+Comment[el]=Εκτέλεση εφαρμογής
 Icon=system-run
 Categories=Utility;
 Exec=gexec

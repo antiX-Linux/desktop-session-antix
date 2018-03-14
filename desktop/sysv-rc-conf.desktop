@@ -4,5 +4,7 @@ Exec=rc-conf-wrapper.sh
 Icon=gnome-settings-default-applications
 Terminal=false
 Name=Choose Startup Services
+Name[am]=የ ማስጀመሪያ ግልጋሎት ይምረጡ
+Name[el]=Επιλέξτε Υπηρεσίες εκκίνησης
 Categories=System;
 NoDisplay=False

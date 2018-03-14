@@ -2,10 +2,12 @@
 Encoding=UTF-8
 Type=Application
 Name=Audio Player
+Name[am]=የ ድምፅ ማጫወቻ
 Name[be]=Музычны плэер
 Name[cs]=Přehrávač hudby
 Name[da]=Lydafspiller
 Name[de]=Audio-Player
+Name[el]=Αναπαραγωγή ήχου
 Name[es]=Reproductor de música
 Name[fr]=Lecteur de Musique
 Name[it]=Lettore di Musica

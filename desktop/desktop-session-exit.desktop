@@ -2,6 +2,8 @@
 Encoding=UTF-8
 Type=Application
 Name=Exit Desktop Session
+Name[am]=ከ ዴስክቶፕ-ክፍለ ጊዜ መውጫ
+Name[el]=Έξοδος από την επιφάνεια εργασίας
 Icon=application-exit
 Categories=System;
 Exec=desktop-session-exit

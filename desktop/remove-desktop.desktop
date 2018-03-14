@@ -1,7 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Remove Menu Item
+Name[am]=ዝርዝር እቃ ማስወገጃ
+Name[el]=Αφαίρεση στοιχείου μενού
 Comment= Remove a Menu Item
+Comment[am]=ዝርዝር እቃ ማስወገጃ
+Comment[el]=Αφαίρεση στοιχείου μενού
 Exec=remove-desktop
 Icon=/usr/share/icons/Faenza-Cupertino-mini/devices/48/computer.png
 Terminal=false

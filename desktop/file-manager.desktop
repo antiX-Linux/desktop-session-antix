@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=File Manager
+Name[am]=የ ፋይል አስተዳዳሪ
 Name[ar]=مدير الملفات
 Name[ast]=Xestor de Ficheros
 Name[bg]=Файлов мениджър

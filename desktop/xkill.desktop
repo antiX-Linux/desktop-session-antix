@@ -2,6 +2,8 @@
 Encoding=UTF-8
 Type=Application
 Name=App Killer
+Name[am]=መተግበሪያ መግደያ
+Name[el]=App Killer
 Icon=gtk-no
 Categories=Utility;
 Exec=xkill

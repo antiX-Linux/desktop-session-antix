@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=Speaker Test
+Name[am]=ስፒከር መሞከሪያ
+Name[el]=Δοκιμή ηχείου
 Comment=Check speakers are working
+Comment[am]=ስፒከር እንደሚሰራ ያረጋግጡ
+Comment[el]=Ελέγξτε ότι τα ηχεία λειτουργούν
 Exec=x-terminal-emulator -e speaker-test --channels 2 --test wav --nloops 3
 Icon=preferences-desktop-sound
 Terminal=false

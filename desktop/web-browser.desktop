@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=Web Browser
+Name[am]=ዌብ መቃኛ
 Name[ar]=متصفّح وِب
 Name[ast]=Restolador web
 Name[be]=Гартач Сеціва
@@ -11,7 +12,7 @@ Name[ca]=Navegador web
 Name[cs]=Webový prohlížeč
 Name[da]=Webbrowser
 Name[de]=Webbrowser
-Name[el]=Περιηγητής διαδικτύου
+Name[el]=Πρόγραμμα περιήγησης
 Name[en_GB]=Web Browser
 Name[es]=Navegador web
 Name[et]=Veebisirvija

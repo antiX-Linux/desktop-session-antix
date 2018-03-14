@@ -2,6 +2,8 @@
 Encoding=UTF-8
 Type=Application
 Name=Update Menu
+Name[am]=ዝርዝር ማሻሻያ
+Name[el]=Ενημέρωση Μενού 
 Icon=update-manager
 Categories=System;
 Exec=desktop-menu --write-out-global

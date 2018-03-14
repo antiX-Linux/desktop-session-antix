@@ -22,7 +22,6 @@ desktop_session_restart="$lib_dir/desktop-session-restart";
 desktop_session_exit_gui="$lib_dir/desktop-session-exit.py";
 desktop_session_update_wm_menus="$lib_dir/desktop-session-update-wm-menus";
 desktop_session_menu_window="$lib_dir/desktop-session-menu-window";
-desktop_session_config_check="$lib_dir/ds-config-check";
 
 #Desktop-session startup scripts
 main_startup_file="$main_dts_dir/startup";

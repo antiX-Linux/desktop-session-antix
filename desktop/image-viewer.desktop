@@ -2,9 +2,11 @@
 Encoding=UTF-8
 Type=Application
 Name=Image Viewer
+Name[am]=ምስል መመልከቻ
 Name[ca]=Visor d'imatges
 Name[cs]=Prohlížeč obrázků
 Name[de]=Bildbetrachter
+Name[el]=Προβολής εικόνων
 Name[es]=Visor de imagenes
 Name[fr]=Visualisateur d'images
 Name[nl]=Afbeeldingen-viewer
