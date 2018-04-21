@@ -24,6 +24,8 @@ import locale
 import getopt
 import re
 import os
+import shlex
+from subprocess import Popen, PIPE
 import xdg.Menu
 import xdg.DesktopEntry
 import xdg.IconTheme
@@ -295,11 +297,17 @@ encoding = locale.getlocale()[1] or 'UTF-8'
 if write_out_global:
     USER_HOME="/usr/share/desktop-menu/"
     for i in os.listdir('/usr/share/desktop-menu/templates'):
-      if i.endswith(".template"):
-        i = re.sub(r'\..*', '', i)
-        print 'Writing Menu: %s' % i
-        DESKTOP = i
-        build_menu()
+        if i.endswith(".template"):
+            checkwmname = "which " + i.split('.',1)[0]
+            myprocess = Popen( shlex.split(checkwmname), stdout=PIPE)
+            mystdout = myprocess.communicate()[0]
+            ### if the corresponding wm is not currently installed, skip this template
+            ###  (to avoid logspam e.g. "Writing Menu: jwm... sh: 1: jwm: not found")
+            if mystdout and mystdout[0] != '':
+                i = re.sub(r'\..*', '', i)
+                print 'Writing Menu: %s' % i
+                DESKTOP = i
+                build_menu()
 else:
     USER_HOME = os.environ['HOME']
     if 'DISPLAY' in os.environ and not write_out_global:
