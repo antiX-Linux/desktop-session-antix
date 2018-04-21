@@ -12,7 +12,7 @@
 
 #Requires pyxdg http://cvs.freedesktop.org/cgi-bin/viewcvs.cgi/pyxdg/
 
-#USAGE EXAMPLE FOR antiX
+#USAGE EXAMPLE FOR antiX 
 #desktop-menu > ~/.WM/applications
 #Then link your main WM menu to this application menu.
 
@@ -41,29 +41,29 @@ Options:
   Locale:
   --locale=locale               set output language and encoding
                                 (This uses your session locale as the default)
-
+  
   Filtering:
   --root-folder folder          folder to generate (for example: /Games)
   --menu-programs               Make a list of menu program links
-
+  
   Specify Menu Type:
   --menu-file                   Specify the menu file to use
-  --desktop-code                Specify which WM you are using
+  --desktop-code                Specify which WM you are using 
                                 (for example: icewm, fluxbox, jwm, etc...)
                                 (Requires matching template!)
-
+                                
   Utilities:
-  --terminal command            set terminal emulator command
+  --terminal command            set terminal emulator command 
                                 (default: xterm -e %%s)
   --write-out                   Write the output to the applications
                                 file from the appropriate template
-  --write-out-file              Specify the name of the file rather than
+  --write-out-file              Specify the name of the file rather than 
                                 using the template.
-
+  
   Icon Setting:
   --no-gtk                      turn off using gtk to find the menu icons
                                 (includes --with-theme-paths function)
-  --theme theme                 set icon theme
+  --theme theme                 set icon theme 
                                 (Disables gtk theme)
   --with-theme-paths            convert icon base names to icon absolute paths
                                 using specified icon theme
@@ -74,29 +74,26 @@ Options:
   --default-entry-icon icon     icon for entries that not provide Icon option
                                 (This is blank by default)
   --no-icons                    Turns off Icons
-
+  
   Help and Information:
   --help                        print this help and exit
   --version                     print version and exit
 """ % sys.argv[0]
   sys.exit(exit_code)
-
+  
 def print_version():
   print "%s version %s" % (
     os.path.basename(sys.argv[0]), version)
   sys.exit(0)
-
+  
 def write_to_file(STRING):
-    if not os.path.exists(USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File):
-      os.system("mkdir -p %s; rm -r %s" % (USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File),(USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File))
-
     text = file((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File), "a")
     text.write (STRING+"\n")
     text.close()
 
 def find_icon(entry):
   icon = entry.getIcon()
-
+  
   if icon and not no_gtk:
     old_stdout = sys.stdout; old_stderr = sys.stderr; sys.stdout = open(os.devnull, 'w'); sys.stderr = open(os.devnull, 'w')
     import gtk
@@ -112,20 +109,20 @@ def find_icon(entry):
     else:
       icon = xdg.IconTheme.getIconPath(icon, icon_size) or icon
     sys.stdout=old_stdout; sys.stderr=old_stderr
-
+      
   if icon and with_theme_paths:
     icon = xdg.IconTheme.getIconPath(icon, icon_size) or icon
-
+    
   icon = re.sub(r' ','\ ', icon)
   return icon
 
 def process_menu(menu):
   for entry in menu.getEntries():
     if isinstance(entry, xdg.Menu.Separator):
-        if write_out:
-            write_to_file(Var.Separator)
-        else:
-            print Var.Separator
+      if write_out:
+        write_to_file(Var.Separator)
+      else:
+        print Var.Separator
     elif isinstance(entry, xdg.Menu.Menu):
       name = entry.getName() or entry.DesktopFileID
       if not no_icons:
@@ -142,23 +139,28 @@ def process_menu(menu):
           (" --icon-size \"%d\"" % icon_size) +
           (with_theme_paths and " --with-theme-paths" or "")).encode(encoding),
         if locale_str:
-            print (" --locale \"%s\"" % locale_str).encode(encoding),
+          print (" --locale \"%s\"" % locale_str).encode(encoding),
         print
       else:
         if no_icons:
-            SUB_ORDER('menu',name,'','')
+          SUB_ORDER('menu',name,'','')
         else:
-            SUB_ORDER('menu',name,icon,'')
+          SUB_ORDER('menu',name,icon,'')
         if write_out:
+          if Var.Menu_ID == '1':
+            write_to_file((Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding))
+          else:
             write_to_file((Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1)).encode(encoding))
         else:
+          if Var.Menu_ID == '1':
+            print (Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding)
+          else:
             print (Var.Menu_Start % (SUB_ORDER.sub0, SUB_ORDER.sub1)).encode(encoding)
-
         process_menu(entry)
         if write_out:
-            write_to_file(Var.Menu_End.encode(encoding))
+          write_to_file(Var.Menu_End.encode(encoding))
         else:
-            print Var.Menu_End.encode(encoding)
+          print Var.Menu_End.encode(encoding)
     elif isinstance(entry, xdg.Menu.MenuEntry):
       de = entry.DesktopEntry
       desktopFile=str(entry)
@@ -168,7 +170,7 @@ def process_menu(menu):
         if not no_icons:
           icon = find_icon(de) or default_entry_icon
         execute = exec_clean2_re.sub('%', exec_clean1_re.sub('', de.getExec()))
-        if de.getTerminal(): execute = terminal % execute
+        if de.getTerminal(): execute = terminal % execute      
         if no_icons:
           SUB_ORDER('prog',name,'',execute)
         else:
@@ -178,7 +180,7 @@ def process_menu(menu):
         else:
           print (Var.Program % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding)
 
-class Var:
+class Var: 
   def read(self):
     var = Var
     for line in open("/usr/share/desktop-menu/templates/"+DESKTOP+".template", "r").xreadlines():
@@ -190,27 +192,27 @@ class Var:
           OBJECT=(pieces[1])
           OBJECT = re.sub(r'\n', '', OBJECT)
           setattr(var, var.VARIABLE, OBJECT)
-
-class SUB_ORDER:
+          
+class SUB_ORDER: 
   def __init__(self,menuORprog,NAME,ICON,EXECUTE):
     var = SUB_ORDER
     count=0
     if menuORprog == "menu":
-        SUB = Var.Menu_Sub_Order.split(',')
+      SUB = Var.Menu_Sub_Order.split(',')
     elif menuORprog == "prog":
-        SUB = Var.Program_Sub_Order.split(',')
-
+      SUB = Var.Program_Sub_Order.split(',')
+      
     for value in SUB:
       str_count=str(count)
       var.VARIABLE="sub"+str_count
       if re.search(r'icon', value):
-          setattr(var, var.VARIABLE, ICON)
+        setattr(var, var.VARIABLE, ICON)
       elif re.search(r'execute', value):
-          setattr(var, var.VARIABLE, EXECUTE)
+        setattr(var, var.VARIABLE, EXECUTE)
       elif re.search(r'name', value):
-          setattr(var, var.VARIABLE, NAME)
+        setattr(var, var.VARIABLE, NAME)
       count=count+1
-
+      
 root_folder = ""
 menu_file = ""
 terminal = "desktop-defaults-run -t %s"
@@ -231,9 +233,9 @@ exec_clean2_re = re.compile(r'%%')
 encoding = None
 locale_str = None
 
-try: opts, args = getopt.getopt(sys.argv[1:], "",
+try: opts, args = getopt.getopt(sys.argv[1:], "", 
   ("help", "version", "locale=",
-   "root-folder=", "terminal=", "default-folder-icon=",
+   "root-folder=", "terminal=", "default-folder-icon=", 
    "default-entry-icon=", "menu-programs", "theme=", "with-theme-paths",
    "icon-size=", "write-out", "write-out-global", "write-out-file=", "desktop-code=", "no-gtk","no-icons", "menu-file="))
 except getopt.GetoptError: print_usage()
@@ -241,49 +243,53 @@ except getopt.GetoptError: print_usage()
 locale.setlocale(locale.LC_ALL, "")
 
 for o, v in opts:
-    if o == "--locale":
-        locale_str = v
-        locale.setlocale(locale.LC_ALL, locale_str)
-    if o == "--root-folder": root_folder = v
-    elif o == "--menu-file": menu_file = v
-    elif o == "--terminal": terminal = v
-    elif o == "--default-folder-icon": default_folder_icon = v
-    elif o == "--default-entry-icon": default_entry_icon = v
-    elif o == "--menu-programs" : menu_programs = True
-    elif o == "--write-out" : write_out = True
-    elif o == "--write-out-global" : write_out = True; write_out_global = True;
-    elif o == "--write-out-file" : write_out_file = v
-    elif o == "--with-theme-paths" : with_theme_paths = True
-    elif o == "--no-gtk" : no_gtk = True
-    elif o == "--no-icons" : no_icons = True
-    elif o == "--icon-size": icon_size = int(v)
-    elif o == "--theme" : xdg.Config.setIconTheme(v)
-    elif o == "--desktop-code" : DESKTOP_CODE = v
-    elif o in ("-h", "-?", "--help"): print_usage(0)
-    elif o in ("-v", "--version"): print_version()
+  if o == "--locale":
+    locale_str = v
+    locale.setlocale(locale.LC_ALL, locale_str)
+  if o == "--root-folder": root_folder = v
+  elif o == "--menu-file": menu_file = v
+  elif o == "--terminal": terminal = v
+  elif o == "--default-folder-icon": default_folder_icon = v
+  elif o == "--default-entry-icon": default_entry_icon = v
+  elif o == "--menu-programs" : menu_programs = True
+  elif o == "--write-out" : write_out = True
+  elif o == "--write-out-global" : write_out = True; write_out_global = True; 
+  elif o == "--write-out-file" : write_out_file = v
+  elif o == "--with-theme-paths" : with_theme_paths = True
+  elif o == "--no-gtk" : no_gtk = True
+  elif o == "--no-icons" : no_icons = True
+  elif o == "--icon-size": icon_size = int(v)
+  elif o == "--theme" : xdg.Config.setIconTheme(v)
+  elif o == "--desktop-code" : DESKTOP_CODE = v
+  elif o in ("-h", "-?", "--help"): print_usage(0)
+  elif o in ("-v", "--version"): print_version()
 
 def build_menu():
     Var().read()
     if write_out_file:
         Var.App_File = write_out_file
-
-    open((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File), 'w').close()
+  
+    if not os.path.isdir(USER_HOME+"/"+Var.Conf_Dir+"/"):
+        os.system("mkdir -p %s" % (USER_HOME+"/"+Var.Conf_Dir+"/"))
+        os.system("touch %s" % (USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File))
+    else:
+        open((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File), 'w').close()  
 
     menu = xdg.Menu.parse(menu_file)
     if root_folder: menu = menu.getMenu(root_folder)
-
+  
     if write_out:
-        write_to_file(Var.File_Start)
-
+      write_to_file(Var.File_Start)
+  
     process_menu(menu)
-
+  
     if write_out:
-        write_to_file(Var.File_End)
-
+      write_to_file(Var.File_End)
+  
     if not (os.path.getsize((USER_HOME+"/"+Var.Conf_Dir+"/"+Var.App_File)) > 50):
-        SUB_ORDER('prog',"Retry",'',"desktop-menu --write-out")
-        write_to_file((Var.Program % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding))
-
+      SUB_ORDER('prog',"Retry",'',"desktop-menu --write-out")
+      write_to_file((Var.Program % (SUB_ORDER.sub0, SUB_ORDER.sub1, SUB_ORDER.sub2)).encode(encoding))
+      
     if Var.Restart_Command and 'DISPLAY' in os.environ:
         os.system("%s" % (Var.Restart_Command))
 
@@ -313,10 +319,10 @@ else:
             with open(USER_HOME+"/.desktop-session/desktop-code."+DISPLAY, "r") as f:
                 DESKTOP_CODE = f.readline()
                 DESKTOP_CODE = re.sub(r'\n', '', DESKTOP_CODE)
-
+            
     if not DESKTOP_CODE:
-        print 'No Desktop Code. Please specify a desktop code with --desktop-code';
-        exit
-    else:
-        DESKTOP = re.sub(r'.*-', '', DESKTOP_CODE)
-        build_menu()
+      print 'No Desktop Code. Please specify a desktop code with --desktop-code';
+      exit
+    else:  
+      DESKTOP = re.sub(r'.*-', '', DESKTOP_CODE)
+      build_menu()
