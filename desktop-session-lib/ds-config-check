@@ -1,5 +1,25 @@
+#!/bin/bash
+#Name: ds-config-check
+#Version: 1.0
+#Depends: 
+#Author: Dave (david@daveserver.info)
+#Purpose: Check integrity of desktop-session.conf
+#License: gplv2
+
+CONF_DIR="$HOME/.desktop-session"
+CONF_FILE="$CONF_DIR/desktop-session.conf"
+
+if [ ! -f $CONF_FILE ]; then
+    mkdir -p $CONF_DIR;
+    touch $CONF_FILE
+    cat <<EOT >> $CONF_FILE
 #This is the desktop-session config file.
 #This is structured in a bash script format, so all options must be option="desired-option
+EOT
+fi 
+
+if ! grep --quiet "^STARTUP_DELAY=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session service delay.
 #This is to set how long to delay startup to give enough time for the wm to completely load.
@@ -8,18 +28,33 @@
 #TIME is expressed in seconds
 #Options: 0-9...
 STARTUP_DELAY="2"
+EOT
+fi
+
+if ! grep --quiet "^TIMES_TO_CHECK=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session window manager check
 #This is to set the amount of times desktop-session checks for a running window manager
 #before giving up and denying the session to load.
 #Options: 0-9...
 TIMES_TO_CHECK="20"
+EOT
+fi
+
+if ! grep --quiet "^FORCE_LOAD=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session give up override
 #This is to set the override if the window manager is never found to be running by 
 #desktop-session. This will force the session to load if set to true.
 #Options: true | false
 FORCE_LOAD="false"
+EOT
+fi
+
+if ! grep --quiet "^SESSION_PROTECT=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session Protect.
 #This is how to protect the user from automatic updating of any file within desktop-session.
@@ -29,17 +64,32 @@ FORCE_LOAD="false"
 #SESSION_PROTECT="ask #Notify me at startup of any changes and allow me to choose what to update
 #SESSION_PROTECT="false #Just update me, I dont want to worry about falling behind.
 SESSION_PROTECT="false"
+EOT
+fi
+
+if ! grep --quiet "^OTHER_DESKTOPS_WINDOW=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session other desktops window
 #This is to set the other desktops window to pop up or not when a non default desktop is started.
 #true = pop up
 #false = no pop up
 OTHER_DESKTOPS_WINDOW="true"
+EOT
+fi
+
+if ! grep --quiet "^NOTIFICATION_DIALOG=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Notification Dialog
 #This is where to enable / disable the session loading dialog
 #Options: true | false
 NOTIFICATION_DIALOG="false"
+EOT
+fi
+
+if ! grep --quiet "^NOTIFICATION_TEXT=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Notification text or program
 #This is where the text is set for the notification that the session is loading.
@@ -48,12 +98,21 @@ NOTIFICATION_DIALOG="false"
 #NOTIFICATION_TEXT="Session is Loading, Please Wait....."
 #NOTIFICATION_TEXT="/usr/games/fortune"
 NOTIFICATION_TEXT="Session is Loading, Please Wait....."
+EOT
+fi
+
+if ! grep --quiet "^STARTUP_DIALOG=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Startup Dialog
 #This is where to enable / disable the session startup dialog
 #Options: true | false
 STARTUP_DIALOG="false"
+EOT
+fi
 
+if ! grep --quiet "^STARTUP_DIALOG_CMD=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Startup Dialog Command
 #This is where to set the startup dialog command
@@ -61,22 +120,42 @@ STARTUP_DIALOG="false"
 #STARTUP_DIALOG_CMD="leafpad ~/.startup-text
 #STARTUP_DIALOG_CMD="yad --image='info' --text='this is my startup dialog'"
 STARTUP_DIALOG_CMD="/usr/local/lib/desktop-session/startup-dialog.py"
+EOT
+fi
+
+if ! grep --quiet "^STARTUP_SOUND=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Startup Sound
 #Play Sound when loading the desktop (uses terminal command play)
 #Options: true | false
 STARTUP_SOUND="false"
+EOT
+fi
+
+if ! grep --quiet "^STARTUP_SOUND_LEVEL=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Default Sound Level
 #Set the sound volume level when starting up to default level when startup sound is true
 #Set using amixer sset 'Master' -M
 #Level is set from 0% - 100%
 STARTUP_SOUND_LEVEL="25%"
+EOT
+fi
+
+if ! grep --quiet "^STARTUP_SOUND_FILE=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Startup Sound File
 #Location of the file for the startup sound 
 #Can be left blank if you would like to set default sound level but not have a startup sound
 STARTUP_SOUND_FILE="$HOME/Music/startup.ogg"
+EOT
+fi
+
+if ! grep --quiet "^LOAD_CONKY=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session load conky
 #This will load a window manager specific conky from ~/.conky
@@ -84,17 +163,33 @@ STARTUP_SOUND_FILE="$HOME/Music/startup.ogg"
 #Else we will load conky without the -c parameter
 #Options: true | false
 LOAD_CONKY="true"
+EOT
+fi
+
+if ! grep --quiet "^LOAD_XDG_AUTOSTART=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session load xdg autostart
 #This will load any application that is setup to autostart via xdg autostart directories /
 #.desktop files.
 #Options: true | false
 LOAD_XDG_AUTOSTART="false"
+EOT
+fi
+
+
+if ! grep --quiet "^LOAD_STARTUP_FILE=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session load startup
 #This will load any application that is setup to autostart via /etc/desktop-session/startup
 #Options: true | false
 LOAD_STARTUP_FILE="true"
+EOT
+fi
+
+if ! grep --quiet "^SCREEN_BLANK_TIME=" $CONF_FILE; then 
+    cat <<EOT >> $CONF_FILE
 
 #Session screen blank
 #This is to set the amount of time that the screen stays visible.
@@ -102,3 +197,6 @@ LOAD_STARTUP_FILE="true"
 #TIME expressed in seconds
 #Options: 0-9...
 SCREEN_BLANK_TIME="3600"
+EOT
+fi
+

@@ -27,9 +27,6 @@ grep -q "START_DAEMON=no" /etc/default/wicd || wicd-client -t &
 # Uncomment after installing apt-notifier
 #apt-notifier & 
 
-# Uncomment to use left hand mouse
-#lh-mouse &
-
 # Create a bootchart image if bootchart was run
 test -e /etc/live/config/bootchart \
     && (sleep 6 && test -e /var/log/bootchart.tgz \
